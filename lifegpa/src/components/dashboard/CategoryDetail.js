@@ -1,15 +1,16 @@
 import React from 'react';
 import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
+import { circleCreator } from '../../actions';
 
 const CategoryDetail = props => {
 
     return (
         <div className="details-category">
             {/* <Link to={`/details`}> */}
-            <h3>{props.category.name}</h3>
-            <p>{props.category.gpa}</p>
+            {props.circleCreator(props.category.gpa, props.category.color, props.category.name)}
             {/* </Link> */}
+
         </div>
     );
 };
@@ -20,6 +21,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-    mapStateToProps, {}
-    // { getHabit }
+    mapStateToProps,
+     { circleCreator }
 )(CategoryDetail);
