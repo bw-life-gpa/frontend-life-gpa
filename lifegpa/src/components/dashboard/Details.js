@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from "react-redux";
 
 import './Dashboard.css';
-
-import CategoryDetail from './CategoryDetail';
-
+import CategoryCircle from './CategoryCircle';
 
 class Details extends Component {
 
@@ -22,7 +20,7 @@ class Details extends Component {
         return (
             <div className="details">
                 <h3> Details </h3>
-                {this.props.categories.map(e => (<CategoryDetail category={e} key={e.name}/> ))}
+                {this.props.categories.map(e => (<CategoryCircle category={e} key={e.name}/> ))}
             </div>
         );
     }

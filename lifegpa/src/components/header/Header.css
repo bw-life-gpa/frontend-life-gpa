@@ -1,0 +1,35 @@
+.header {
+    display: flex;
+    background-color: #4e4949;
+    color: #ffec26;
+    box-shadow: 0px 1px 5px 1px grey;
+    border-bottom: 1px solid darkgrey;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 2%;
+}
+
+.left a{
+    cursor: pointer;
+    color: #ffec26;
+    text-decoration: none;
+}
+.left a:hover {
+    text-decoration: underline;
+}
+
+.right {
+    display: flex;
+}
+.right a{
+    cursor: pointer;
+    color: #fdfdfd;
+    text-decoration: none;
+    padding-right: 10px;
+}
+.right a:hover {
+    text-decoration: underline;
+}
