@@ -1,7 +1,7 @@
 // import {  } from '../actions';
   
 const initialState = {
-    GPA: '50%',
+    GPA: '75%',
     categories: [
         {name: 'Health',
         color: '#00ef97',

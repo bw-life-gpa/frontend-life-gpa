@@ -25,6 +25,7 @@ class Dashboard extends Component {
                 <GPA />
 
                 <Link to={`/details`}> <button className="dashboard-button">Details</button> </Link>
+                
             </div>
         );
     }
