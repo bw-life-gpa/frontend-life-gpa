@@ -3,12 +3,14 @@ import { Route } from 'react-router-dom';
 import './App.css';
 
 import Dashboard from './components/dashboard/Dashboard'
+import Details from './components/dashboard/Details'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         <Route exact path="/" component={Dashboard} />
+        <Route exact path="/details" component={Details} />
       </div>
     );
   }

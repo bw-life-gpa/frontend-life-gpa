@@ -2,13 +2,13 @@ import React from 'react';
 import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
 
-const GPA = props => {
+const CategoryDetail = props => {
 
     return (
-        <div className="GPA">
+        <div className="details-category">
             {/* <Link to={`/details`}> */}
-            <h3>Life GPA</h3>
-            <p>{props.GPA}</p>
+            <h3>{props.category.name}</h3>
+            <p>{props.category.gpa}</p>
             {/* </Link> */}
         </div>
     );
@@ -16,10 +16,10 @@ const GPA = props => {
 
 
 const mapStateToProps = state => ({
-    GPA: state.dashboardReducer.GPA
+    // habit: state.dashboardReducer.habit
 });
 
 export default connect(
-    mapStateToProps,
-    {}
-)(GPA);
+    mapStateToProps, {}
+    // { getHabit }
+)(CategoryDetail);

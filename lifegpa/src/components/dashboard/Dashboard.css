@@ -2,10 +2,36 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 100px;
+}
+
+.dashboard-button {
+    background-color: #ffec26;
+    color: black;
+    width: 200px;
+    height: 30px;
+    font-size: 20px;
+    border: none;
+    margin: 20px;
+    font-weight: bold;
 }
 
 .GPA {
-    border: 5px solid yellow;
+    border: 5px solid #ffec26;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
+
+.details {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+}
+
+.details-category {
+    border: 5px solid #ffec26;
     border-radius: 50%;
     height: 100px;
     width: 100px;
