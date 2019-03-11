@@ -2,7 +2,6 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
-import rootReducer from "./reducers";
 
 //Router deps
 import { BrowserRouter as Router, withRouter } from "react-router-dom";
