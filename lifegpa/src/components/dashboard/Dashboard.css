@@ -9,7 +9,7 @@
     background-color: #ffec26;
     color: black;
     width: 200px;
-    height: 30px;
+    /* height: 30px; */
     font-size: 20px;
     border: none;
     margin: 20px;
@@ -64,9 +64,15 @@
     margin-top: 100px;
 }
 
+.category-circle {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .details-category {
-    /* border: 5px solid #ffec26; */
-    /* border-radius: 50%; */
-    /* height: 100px; */
-    /* width: 100px; */
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
 }
