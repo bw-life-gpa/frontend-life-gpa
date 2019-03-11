@@ -1,0 +1,12 @@
+.dashboard {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.GPA {
+    border: 5px solid yellow;
+    border-radius: 50%;
+    height: 100px;
+    width: 100px;
+}
