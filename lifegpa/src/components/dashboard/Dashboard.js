@@ -8,12 +8,12 @@ import GPA from './GPA';
 
 
 class Dashboard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            GPA: [],
-        };
-    }
+    // constructor(props) {
+    //     super(props);
+    //     this.state = {
+    //         GPA: [],
+    //     };
+    // }
 
     componentDidMount() {
         // this.props.getGPA();
@@ -26,6 +26,7 @@ class Dashboard extends Component {
 
                 <Link to={`/details`}> <button className="dashboard-button">Details</button> </Link>
                 
+                <Link to={`/daily`}> <button className="dashboard-button">Begin Daily Report</button> </Link>
             </div>
         );
     }
