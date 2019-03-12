@@ -8,6 +8,7 @@ export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const CREATE_CIRCLE = "CREATE_CIRCLE";
+export const TOGGLE_DAILY = "TOGGLE_DAILY";
 
 export const login = creds => dispatch => {
 
@@ -44,3 +45,10 @@ export const circleCreator = (gpa, color, title ) => dispatch => {
     </div>);
   };
   
+export const toggleDaily = (id, yn ) => dispatch => {
+    dispatch({ type: TOGGLE_DAILY });
+
+    return (
+      <div>toggle</div>
+    );
+  };

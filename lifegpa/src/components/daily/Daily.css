@@ -13,11 +13,21 @@
     width: 50%;
 }
 
+.daily-habit-name {
+    font-weight: bold;
+}
+
 .daily-habit-buttons button{
     background-color: white;
     height: 40px;
     width: 40px;
     border-radius: 50%;
-    border: 1px solid black;
+    border: 1px solid #efefef;
     padding: 0;
+    font-size: 15px;
+}
+
+.daily-habit-buttons button:hover {
+    background-color: #efefef;
+    /* color:  */
 }
