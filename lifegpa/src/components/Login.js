@@ -17,7 +17,7 @@ export class Login extends Component {
   login = e => {
     e.preventDefault();
     this.props.login(this.state).then((res) => {
-      this.props.history.push("/");
+      this.props.history.push("/dashboard");
     });
   };
 
