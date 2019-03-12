@@ -14,15 +14,16 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_REQUEST });
   return axios
-    .post("http://localhost:5000/login", creds)
+    .post("http://localhost:4444/api/login", creds)
     .then(res => {
       console.log(res);
-      localStorage.setItem("token", res.data.payload);
-      dispatch({ type: LOGIN_SUCCESS, payload: res.data.payload });
+      localStorage.setItem("authorization", res.data.token);
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
       //getDashboard();
     })
     .catch(err => {
-      dispatch({ type: LOGIN_FAILURE, payload: err.response });
+      console.log(err.response.data.message);
+      dispatch({ type: LOGIN_FAILURE, payload: err.response.data.message });
     });
 };
 
@@ -30,7 +31,7 @@ export const login = creds => dispatch => {
 export const register = newUser => dispatch => {
   dispatch({ type: REGISTER_START });
   return axios
-    .post("http://localhost:5000/api/register", newUser)
+    .post("http://localhost:4444/api/register", newUser)
     .then(res => {
       console.log(res);
       dispatch({ type: REGISTER_SUCCESS, payload: res.data.payload });
