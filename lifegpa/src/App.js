@@ -1,4 +1,3 @@
-
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Route, Link } from "react-router-dom";
@@ -16,11 +15,12 @@ class App extends Component {
   render() {
     return (
       <div className="App">
+
         <Header />
 
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
-
+        <Route path="/onboarding" component={Introduction} />
         <Route exact path="/" component={Dashboard} />
         <Route exact path="/daily" component={Daily} />
         <Route exact path="/details" component={Details} />
