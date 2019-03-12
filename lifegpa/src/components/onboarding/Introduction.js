@@ -1,8 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import "./Introduction.css";
 
 const Introduction = () => {
   return (
-    <div>
+    <div className="intro">
       <h2>Welcome to LifeGPA</h2>
       <p>
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
@@ -16,7 +18,9 @@ const Introduction = () => {
         voluptatibus. Optio vitae aliquam pariatur dignissimos. Magni neque
         beatae praesentium quia?
       </p>
-      <button>Next</button>
+      <Link to="/onboarding/habits">
+        <button>Continue</button>
+      </Link>
     </div>
   );
 };

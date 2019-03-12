@@ -1,15 +1,18 @@
 import React, { Component } from "react";
 import { register } from "../actions";
 import { connect } from "react-redux";
-
+import { login } from "../actions";
 import "./Register.css";
 
 export class Register extends Component {
   state = {
     registration: {
       username: "",
-      email: "",
       password: "",
+      firstname: "",
+      lastname: "",
+      email: "",
+      userImgUrl: "",
       passCheck: ""
     }
   };
@@ -25,9 +28,18 @@ export class Register extends Component {
 
   register = e => {
     e.preventDefault();
+    let newUser = {
+      username: this.state.registration.username,
+      password: this.state.registration.password,
+      fullName: `${this.state.registration.firstname} ${
+        this.state.registration.lastname
+      }`,
+      email: this.state.registration.email,
+      userImgUrl: ""
+    };
     return this.state.registration.password ===
       this.state.registration.passCheck
-      ? this.props.register(this.state.registration).then(() => {
+      ? this.props.register(newUser).then(() => {
           this.props.history.push("/onboarding");
         })
       : alert(
@@ -47,6 +59,26 @@ export class Register extends Component {
             value={this.state.registration.username}
             onChange={this.handleRegChanges}
             placeholder="Enter Username"
+            autoComplete="off"
+            required
+          />
+          <input
+            className="reg-username"
+            type="text"
+            name="firstname"
+            value={this.state.registration.firstname}
+            onChange={this.handleRegChanges}
+            placeholder="Enter First Name"
+            autoComplete="off"
+            required
+          />
+          <input
+            className="reg-username"
+            type="text"
+            name="lastname"
+            value={this.state.registration.lastname}
+            onChange={this.handleRegChanges}
+            placeholder="Enter Last Name"
             autoComplete="off"
             required
           />

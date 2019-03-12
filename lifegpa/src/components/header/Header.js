@@ -11,6 +11,7 @@ function header(props) {
                 </Link>
             </div>
             <div className="right">
+                <Link to="/dashboard"><p>Dashboard</p></Link>
                 <Link to={`/register`}>
                     <p>Register</p>
                 </Link>
