@@ -8,13 +8,13 @@
 .dashboard-button {
     background-color: #ffec26;
     color: black;
-    width: 200px;
+    width: 250px;
     /* height: 30px; */
     font-size: 20px;
     border: none;
     margin: 20px;
     font-weight: bold;
-    margin-top: 100px;
+    margin-top: 75px;
 }
 
 /* .GPA {
@@ -24,10 +24,20 @@
     width: 100px;
 } */
 
-.donut {
+.circle-chart {
     height: 200px;
     width: 200px;
 }
+.circle-chart-circle {
+    animation: circle-chart-fill 2s reverse;
+    transform: rotate(-90deg);
+    transform-origin: center;
+}
+  
+@keyframes circle-chart-fill {
+    to { stroke-dasharray: 0 100; }
+}
+
 
 .gpa-text {
     fill: #000;
