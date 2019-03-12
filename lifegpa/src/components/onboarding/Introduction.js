@@ -18,7 +18,7 @@ const Introduction = () => {
         voluptatibus. Optio vitae aliquam pariatur dignissimos. Magni neque
         beatae praesentium quia?
       </p>
-      <Link to="/onboarding/habits">
+      <Link to="/onboarding/categories">
         <button>Continue</button>
       </Link>
     </div>
