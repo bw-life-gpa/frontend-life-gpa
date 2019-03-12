@@ -35,7 +35,7 @@ export class Login extends Component {
         <form className="login-form" onSubmit={this.login}>
           <input
             className="login-username"
-            type="type"
+            type="text"
             name="username"
             value={this.state.credentials.username}
             onChange={this.handleLoginChanges}
@@ -45,7 +45,7 @@ export class Login extends Component {
           />
           <input
             className="login-password"
-            type="type"
+            type="password"
             name="password"
             value={this.state.credentials.password}
             onChange={this.handleLoginChanges}
