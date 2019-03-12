@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from "react-redux";
 // import { Link } from 'react-router-dom';
 // import * as d3 from 'd3'
-import { circleCreator } from '../../actions';
+import { circleCreator, calculateGPA } from '../../actions';
 
 
 //const GPA = props => {
@@ -15,6 +15,7 @@ class GPA extends React.Component {
         <div className="GPA">
             {/* <Link to={`/details`}> */}
            <h3>Life GPA</h3>
+           {this.props.calculateGPA('2019-03-01 06:37:44', 1)}
            {this.props.circleCreator(this.props.GPA, '#ffec26', 'LifeGPA')}
         </div>
     )}
@@ -27,5 +28,5 @@ const mapStateToProps = state => ({
 
 export default connect(
     mapStateToProps,
-    { circleCreator }
+    { circleCreator, calculateGPA }
 )(GPA);

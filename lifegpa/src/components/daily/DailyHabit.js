@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from "react-redux";
-import { Link } from 'react-router-dom';
-import { circleCreator } from '../../actions';
+// import { Link } from 'react-router-dom';
 
 const DailyHabit = props => {
 

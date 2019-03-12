@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { connect } from "react-redux";
+// import { connect } from "react-redux";
 import { Route } from "react-router-dom";
 import "./App.css";
 
@@ -29,7 +29,7 @@ class App extends Component {
         <Route path="/onboarding/habits" component={Habits} />
         <Route exact path="/daily" component={Daily} />
         <Route exact path="/details" component={Details} />
-        <Route exact path="/details/:name" component={CategoryDetail} />
+        <Route exact path="/details/:categoryTitle" component={CategoryDetail} />
       </div>
     );
   }
