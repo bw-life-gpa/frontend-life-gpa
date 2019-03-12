@@ -7,9 +7,11 @@ export const LOGIN_REQUEST = "LOGIN_REQUEST";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const CREATE_CIRCLE = "CREATE_CIRCLE";
+export const TOGGLE_DAILY = "TOGGLE_DAILY";
 export const REGISTER_REQUEST = "REGISTER_REQUEST";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
+
 
 export const login = creds => dispatch => {
 
@@ -45,24 +47,27 @@ export const register = newUser => dispatch => {
 export const circleCreator = (gpa, color, title ) => dispatch => {
     dispatch({ type: CREATE_CIRCLE });
     const gpaNum = parseInt(gpa, 10);
-    const gpaRemainder = 100-gpaNum;
-    const circleString = `${gpaNum} ${gpaRemainder}` ;
+    const dashArray = `${gpaNum},100`
 
     return (
     <div>
-        {<svg width="100%" height="100%" viewBox="0 0 42 42" className="donut">
-                <circle className="donut-hole" cx="21" cy="21" r="15.91549430918954" fill="#fff"></circle>
-                <circle className="donut-ring" cx="21" cy="21" r="15.91549430918954" fill="transparent" stroke="#d2d3d4" strokeWidth="3"></circle>
-        
-                <circle className="donut-segment" cx="21" cy="21" r="15.91549430918954" 
-                    fill="transparent" stroke={color} strokeWidth="3" 
-                    strokeDasharray={circleString}
-                    strokeDashoffset="25"></circle>
-                <g className="gpa-text">
-                    <text x="50%" y="50%" className="chart-label">{title}</text>
-                    <text x="50%" y="50%" className="chart-number">{gpaNum}%</text>
-                </g>
+        {<svg width="100%" height="100%" className="circle-chart" viewBox="0 0 42 42" xmlns="http://www.w3.org/2000/svg">
+            <circle className="circle-chart-background" stroke="#efefef" strokeWidth="3" fill="none" cx="21" cy="21" r="15.91549431" />
+            <circle className="circle-chart-circle" stroke={color} strokeWidth="3" strokeDasharray={dashArray} strokeLinecap="round" fill="none" cx="21" cy="21" r="15.91549431" />
+            <g className="gpa-text">
+                <text x="50%" y="50%" className="chart-label">{title}</text>
+                <text x="50%" y="50%" className="chart-number">{gpaNum}%</text>
+            </g>
         </svg>}
     </div>);
   };
   
+
+export const toggleDaily = (id, yn ) => dispatch => {
+    dispatch({ type: TOGGLE_DAILY });
+
+    return (
+      <div>toggle</div>
+    );
+  };
+

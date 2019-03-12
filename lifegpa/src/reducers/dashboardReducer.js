@@ -14,12 +14,21 @@ const initialState = {
         gpa: '50%'},
     ],
     habits: [
-        {name: 'Run 10km',
-        category: 'Health'},
-        {name: 'Clean Garage',
-        category: 'House'},
-        {name: 'Make Money',
-        category: 'Work'},
+        {   "id": 2,
+            "habitTitle": "Run 10km",
+            "category": "Health",
+            "completed": false,
+            "userId": 2},
+        {   "id": 3,
+            "habitTitle": 'Clean Garage',
+            "category": "House",
+            "completed": false,
+            "userId": 2},
+        {   "id": 4,
+            "habitTitle": "Make Money",
+            "category": "Work",
+            "completed": false,
+            "userId": 2},
     ],
     fetchingCategories: false
   };
@@ -32,5 +41,3 @@ const initialState = {
         return state;
     }
   };
-
-  
