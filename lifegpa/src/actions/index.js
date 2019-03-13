@@ -91,8 +91,8 @@ export const getUserHabits = id => dispatch => {
   return axiosWithAuth()
     .get(`https://lifegpa.herokuapp.com/api/users/habits/${id}`)
     .then(res => {
-      console.log(res);
-      dispatch({ type: USER_HABIT_SUCCESS, payload: res.data });
+      console.log(res.data[0].habits);
+      dispatch({ type: USER_HABIT_SUCCESS, payload: res.data[0].habits });
     })
     .catch(err => {
       console.log(err);

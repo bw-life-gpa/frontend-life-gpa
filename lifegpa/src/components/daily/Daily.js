@@ -15,14 +15,11 @@ class Daily extends Component {
       };
 
     componentDidMount() {
-        // const userID = localStorage.getItem("userID")
-        // this.setstate( id: localStorage.getItem("userID"));
-        const userHabits = this.props.getUserHabits(this.getUserID());
-        // const userHabits = this.props.getUserHabits(userID);
-        this.setState({ habits: userHabits });
+        this.props.getUserHabits(this.getUserID())
+        .then( () => {
+            this.setState({ habits: this.props.habits });
+        });
         
-        // let reducedCategory = this.props.category.filter(e => this.props.match.params.categoryTitle === e.categoryTitle);
-        // this.setState({ category: reducedCategory[0] });
     };
 
     getUserID = () => {
@@ -51,7 +48,7 @@ class Daily extends Component {
 
 // export default Dashboard;
 const mapStateToProps = state => ({
-    // habits: state.habitsReducer.habits
+    habits: state.habitsReducer.habits
 });
 
 export default connect(

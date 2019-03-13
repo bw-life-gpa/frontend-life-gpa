@@ -65,7 +65,8 @@ import {
         return {
           ...state,
           fetchingHabit: false,
-          habits: [...state.habits, action.payload]
+        //   habits: [...state.habits, action.payload]
+          habits:  action.payload
         };
       case USER_HABIT_FAILURE:
         return {
