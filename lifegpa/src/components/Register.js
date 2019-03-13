@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { register } from "../actions";
+import { register, login } from "../actions";
 import { connect } from "react-redux";
-import { login } from "../actions";
 import "./Register.css";
 
 export class Register extends Component {
@@ -33,18 +32,21 @@ export class Register extends Component {
       password: this.state.registration.password,
       fullName: `${this.state.registration.firstname} ${
         this.state.registration.lastname
-      }`,
+        }`,
       email: this.state.registration.email,
       userImgUrl: ""
     };
+
+    const newLogin = {
+      username: this.state.registration.username,
+      password: this.state.registration.password
+    }
     return this.state.registration.password ===
       this.state.registration.passCheck
-      ? this.props.register(newUser).then(() => {
-          this.props.history.push("/onboarding");
-        })
+      ? this.props.register(newUser).then(() => this.props.login(newLogin)).then(() => this.props.history.push("/onboarding"))
       : alert(
-          "Password and not match. Please refill the registration form with matching passwords in both fields"
-        );
+        "Password and not match. Please refill the registration form with matching passwords in both fields"
+      );
   };
 
   render() {
@@ -126,6 +128,7 @@ export class Register extends Component {
 export default connect(
   null,
   {
-    register
+    register,
+    login
   }
 )(Register);

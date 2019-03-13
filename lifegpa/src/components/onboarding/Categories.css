@@ -1,0 +1,44 @@
+form {
+  height: 500px;
+}
+
+.categories {
+  margin: 100px auto;
+}
+
+.color-picker {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.box {
+  padding: 20px;
+  margin: 10px 0;
+  width: 20px;
+  height: 20px;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+  background-color: green;
+}
+
+.blue {
+  background-color: blue;
+}
+
+.orange {
+  background-color: orange;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.purple {
+  background-color: purple;
+}

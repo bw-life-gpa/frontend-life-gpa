@@ -6,17 +6,24 @@ import "./Login.css";
 
 export class Login extends Component {
   state = {
-    "username": "",
-    "password": ""
+    credentials: {
+      username: "",
+      password: ""
+    }
   };
 
   handleLoginChanges = e => {
-    this.setState({ [e.target.name]: e.target.value });
+    this.setState({
+      credentials: {
+        ...this.state.credentials,
+        [e.target.name]: e.target.value
+      }
+    });
   };
 
   login = e => {
     e.preventDefault();
-    this.props.login(this.state).then((res) => {
+    this.props.login(this.state.credentials).then(() => {
       this.props.history.push("/dashboard");
     });
   };
@@ -30,7 +37,7 @@ export class Login extends Component {
             className="login-username"
             type="text"
             name="username"
-            value={this.state.username}
+            value={this.state.credentials.username}
             onChange={this.handleLoginChanges}
             placeholder="Enter Username"
             autoComplete="off"
@@ -40,7 +47,7 @@ export class Login extends Component {
             className="login-password"
             type="password"
             name="password"
-            value={this.state.password}
+            value={this.state.credentials.password}
             onChange={this.handleLoginChanges}
             placeholder="Enter Password"
             autoComplete="off"
