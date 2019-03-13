@@ -6,12 +6,13 @@ import "./Categories.css";
 
 export class Categories extends Component {
   state = {
-    category: "",
-    color: ""
+    categoryTitle: "",
+    color: "",
+    userId: ""
   };
 
   componentDidMount() {
-    this.props.getUserCategories();
+    this.props.getUserCategories(this.props.id);
   }
 
   handleCategoryChanges = e => {
@@ -59,9 +60,14 @@ export class Categories extends Component {
   }
 }
 
-const mapStateToProps = state => {};
+const mapStateToProps = state => {
+  return {
+    id: state.loginReducer.id,
+    users: state.userCategoryReducer.users
+  };
+};
 
 export default connect(
-  null,
+  mapStateToProps,
   { getUserCategories }
 )(Categories);
