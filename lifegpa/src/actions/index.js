@@ -21,6 +21,11 @@ export const ADD_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
 export const ADD_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
 export const ADD_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
 
+//Get a user habits
+export const USER_HABIT_REQUEST = "USER_HABIT_REQUEST";
+export const USER_HABIT_SUCCESS = "USER_HABIT_SUCCESS";
+export const USER_HABIT_FAILURE = "USER_HABIT_FAILURE";
+
 // Delete a user category
 export const DELETE_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
 export const DELETE_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
@@ -30,6 +35,7 @@ export const DELETE_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
 export const UPDATE_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
 export const UPDATE_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
 export const UPDATE_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
+
 
 export const TOGGLE_DAILY = "TOGGLE_DAILY";
 export const CREATE_CIRCLE = "CREATE_CIRCLE";
@@ -120,6 +126,23 @@ export const updateCategory = (id, updatedCategory) => dispatch => {
     })
     .catch(err => {
       dispatch({ type: UPDATE_CATEGORY_FAILURE, payload: err.response });
+    });
+};
+
+export const getUserHabits = id => dispatch => {
+  dispatch({ type: USER_HABIT_REQUEST });
+  return axiosWithAuth()
+    .get(`https://lifegpa.herokuapp.com/api/users/habits/${id}`)
+    .then(res => {
+      console.log(res.data[0].habits);
+      dispatch({ type: USER_HABIT_SUCCESS, payload: res.data[0].habits });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: USER_HABIT_FAILURE,
+        payload: err.response.data.message
+      });
     });
 };
 
