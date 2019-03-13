@@ -13,6 +13,9 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const USER_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
 export const USER_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
 export const USER_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
+export const ADD_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
+export const ADD_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
+export const ADD_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
 export const TOGGLE_DAILY = "TOGGLE_DAILY";
 export const CREATE_CIRCLE = "CREATE_CIRCLE";
 export const CALCULATE_GPA = "CALCULATE_GPA";
@@ -20,12 +23,11 @@ export const CALCULATE_GPA = "CALCULATE_GPA";
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_REQUEST });
   return axios
-    .post("http://localhost:4444/api/login", creds)
+    .post("https://lifegpa.herokuapp.com/api/login", creds)
     .then(res => {
       console.log(res);
       localStorage.setItem("authorization", res.data.token);
-      dispatch({ type: LOGIN_SUCCESS, payload: res.data.token });
-      //getDashboard();
+      dispatch({ type: LOGIN_SUCCESS, payload: res.data.user.id });
     })
     .catch(err => {
       console.log(err.response.data.message);
@@ -37,7 +39,7 @@ export const login = creds => dispatch => {
 export const register = newUser => dispatch => {
   dispatch({ type: REGISTER_START });
   return axios
-    .post("http://localhost:4444/api/register", newUser)
+    .post("https://lifegpa.herokuapp.com/api/register", newUser)
     .then(res => {
       dispatch({ type: REGISTER_SUCCESS, payload: res.data.payload });
     })
@@ -47,9 +49,9 @@ export const register = newUser => dispatch => {
 };
 
 export const getUserCategories = id => dispatch => {
-  dispatch({ type: USER_CATEGORY_REQUEST });
+  dispatch({ type: ADD_CATEGORY_REQUEST });
   return axiosWithAuth()
-    .get(`http://localhost:4444/api/users/categories/${id}`)
+    .get(`https://lifegpa.herokuapp.com/api/users/categories/${id}`)
     .then(res => {
       console.log(res);
       dispatch({ type: USER_CATEGORY_SUCCESS, payload: res.data });
@@ -58,6 +60,23 @@ export const getUserCategories = id => dispatch => {
       console.log(err);
       dispatch({
         type: USER_CATEGORY_FAILURE,
+        payload: err.response.data.message
+      });
+    });
+};
+
+export const addCategory = newCategory => dispatch => {
+  dispatch({ type: ADD_CATEGORY_REQUEST });
+  return axiosWithAuth()
+    .post(`https://lifegpa.herokuapp.com/api/users/categories`, newCategory)
+    .then(res => {
+      console.log(res);
+      dispatch({ type: ADD_CATEGORY_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: ADD_CATEGORY_FAILURE,
         payload: err.response.data.message
       });
     });
@@ -115,41 +134,38 @@ export const circleCreator = (gpa, color, title) => dispatch => {
 
 export const toggleDaily = (id, yn) => dispatch => {
   dispatch({ type: TOGGLE_DAILY });
-    return (
-      <div>toggle</div>
-    );
-  };
+  return <div>toggle</div>;
+};
 
-  // calculate GPA of a single item
-  export const calculateGPA = (created_at, completionPoints ) => dispatch => {
-    // To calculate the GPA:
-    // Take the number of "completionPoints" and
-    // divide by the number of days between "TODAY" and "created_at"
+// calculate GPA of a single item
+export const calculateGPA = (created_at, completionPoints) => dispatch => {
+  // To calculate the GPA:
+  // Take the number of "completionPoints" and
+  // divide by the number of days between "TODAY" and "created_at"
 
-    // created_at: 2019-04-02 06:37:44
-    // YYYY-MM-DD 
+  // created_at: 2019-04-02 06:37:44
+  // YYYY-MM-DD
 
-    dispatch({ type: CALCULATE_GPA });
+  dispatch({ type: CALCULATE_GPA });
 
-    let a = moment(created_at, 'YYYY-MM-DD');
-    let now = moment();
-    let days = now.diff(a, 'days');
+  let a = moment(created_at, "YYYY-MM-DD");
+  let now = moment();
+  let days = now.diff(a, "days");
 
-    let gpa = 0;
+  let gpa = 0;
 
-    if (days === 0) {
-      gpa = 100;
-    } else {
-      gpa = Math.floor((completionPoints / days) * 100);
-    }
+  if (days === 0) {
+    gpa = 100;
+  } else {
+    gpa = Math.floor((completionPoints / days) * 100);
+  }
 
-    return (
-      <div>
-        {/* <div>Days: {days}</div>
+  return (
+    <div>
+      {/* <div>Days: {days}</div>
         <div>Points: {completionPoints}</div>
         <div>GPA: {gpa}%</div> */}
-        {gpa}
-      </div>
-    );
-  };
-
+      {gpa}
+    </div>
+  );
+};

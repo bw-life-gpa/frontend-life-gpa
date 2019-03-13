@@ -32,7 +32,7 @@ export class Register extends Component {
       password: this.state.registration.password,
       fullName: `${this.state.registration.firstname} ${
         this.state.registration.lastname
-        }`,
+      }`,
       email: this.state.registration.email,
       userImgUrl: ""
     };
@@ -40,13 +40,16 @@ export class Register extends Component {
     const newLogin = {
       username: this.state.registration.username,
       password: this.state.registration.password
-    }
+    };
     return this.state.registration.password ===
       this.state.registration.passCheck
-      ? this.props.register(newUser).then(() => this.props.login(newLogin)).then(() => this.props.history.push("/onboarding"))
+      ? this.props
+          .register(newUser)
+          .then(() => this.props.login(newLogin))
+          .then(() => this.props.history.push("/onboarding"))
       : alert(
-        "Password and not match. Please refill the registration form with matching passwords in both fields"
-      );
+          "Password and not match. Please refill the registration form with matching passwords in both fields"
+        );
   };
 
   render() {
@@ -86,7 +89,7 @@ export class Register extends Component {
           />
           <input
             className="reg-email"
-            type="email"
+            type="text"
             name="email"
             value={this.state.registration.email}
             onChange={this.handleRegChanges}
