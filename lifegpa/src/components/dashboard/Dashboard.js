@@ -38,6 +38,6 @@ const mapStateToProps = state => ({
 });
 
 export default connect(
-  mapStateToProps, {}
-//   { getGPA }
+  mapStateToProps,
+  {  }
 )(Dashboard);

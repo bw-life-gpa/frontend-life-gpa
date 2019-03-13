@@ -29,7 +29,7 @@ class App extends Component {
         <Route path="/onboarding/categories/habits" component={Habits} />
         <Route exact path="/daily" component={Daily} />
         <Route exact path="/details" component={Details} />
-        <Route exact path="/details/:name" component={CategoryDetail} />
+        <Route exact path="/details/:categoryTitle" component={CategoryDetail} />
       </div>
     );
   }
