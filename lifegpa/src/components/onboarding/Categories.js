@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { CirclePicker } from "react-color";
-import { getUserCategories } from "../../actions";
+import CategoryList from "./CategoryList";
+import { getUserCategories, addCategory } from "../../actions";
 import { connect } from "react-redux";
 import "./Categories.css";
 
@@ -8,12 +9,18 @@ export class Categories extends Component {
   state = {
     categoryTitle: "",
     color: "",
-    userId: ""
+    userId: null
   };
 
   componentDidMount() {
-    this.props.getUserCategories(this.props.id);
+    this.props.getUserCategories(this.getUserID());
   }
+
+  getUserID = () => {
+    const userID = localStorage.getItem("userID");
+    this.setState({ ...this.state, userId: userID });
+    return userID;
+  };
 
   handleCategoryChanges = e => {
     e.preventDefault();
@@ -23,6 +30,18 @@ export class Categories extends Component {
 
   handleChangeComplete = color => {
     this.setState({ color: color.hex });
+  };
+
+  handleAddCategory = e => {
+    e.preventDefault();
+
+    const newCategory = {
+      categoryTitle: this.state.categoryTitle,
+      color: this.state.color,
+      userId: this.state.userId
+    };
+
+    this.props.addCategory(newCategory);
   };
 
   render() {
@@ -38,11 +57,16 @@ export class Categories extends Component {
           <li>Studying</li>
           <li>Work Efficiency</li>
         </ul>
-        <form>
+        <div className="new-category">
+          {/* {this.props.category.map((category, index) => (
+            <CategoryList key={index} category={category} />
+          ))} */}
+        </div>
+        <form onSubmit={this.handleAddCategory}>
           <input
             className="add-category"
             type="text"
-            name="category"
+            name="categoryTitle"
             value={this.state.category}
             onChange={this.handleCategoryChanges}
             placeholder="Enter Category"
@@ -50,6 +74,7 @@ export class Categories extends Component {
             required
           />
           <CirclePicker
+            className="color-picker"
             color={this.state.color}
             onChangeComplete={this.handleChangeComplete}
           />
@@ -62,12 +87,12 @@ export class Categories extends Component {
 
 const mapStateToProps = state => {
   return {
-    id: state.loginReducer.id,
-    users: state.userCategoryReducer.users
+    id: state.loginReducer.id
+    //category: state.getUserCategories.category
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getUserCategories }
+  { getUserCategories, addCategory }
 )(Categories);
