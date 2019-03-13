@@ -18,3 +18,22 @@ form {
   width: 20px;
   height: 20px;
 }
+
+.category-added {
+  max-width: 300px;
+  width: 100%;
+  margin: 20px auto;
+  border-radius: 10px;
+}
+
+input {
+  max-width: 300px;
+  width: 100%;
+  height: 40px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+input::placeholder {
+  text-align: center;
+}

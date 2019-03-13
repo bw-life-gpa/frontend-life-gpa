@@ -15,9 +15,10 @@ import {
 
 const initialState = {
   users: [],
-  fetchingUser: false,
-  deletingUser: false,
-  updatingUser: false,
+  category: [],
+  fetchingCategory: false,
+  deletingCategory: false,
+  updatingCategory: false,
   addingCategory: false,
   error: null
 };
@@ -27,19 +28,19 @@ export default (state = initialState, action) => {
     case USER_CATEGORY_REQUEST:
       return {
         ...state,
-        fetchingUser: true,
+        fetchingCategory: true,
         error: null
       };
     case USER_CATEGORY_SUCCESS:
       return {
         ...state,
-        fetchingUser: false,
-        users: action.payload
+        fetchingCategory: false,
+        category: action.payload
       };
     case USER_CATEGORY_FAILURE:
       return {
         ...state,
-        fetchingUser: false,
+        fetchingCategory: false,
         error: action.payload
       };
     case ADD_CATEGORY_REQUEST:
@@ -52,7 +53,7 @@ export default (state = initialState, action) => {
       return {
         ...state,
         addingCategory: false,
-        users: action.payload
+        category: [...state.category, action.payload]
       };
     case ADD_CATEGORY_FAILURE:
       return {
@@ -63,37 +64,37 @@ export default (state = initialState, action) => {
     case DELETE_CATEGORY_REQUEST:
       return {
         ...state,
-        deletingUser: true,
+        deletingCategory: true,
         error: null
       };
     case DELETE_CATEGORY_SUCCESS:
       return {
         ...state,
-        deletingUser: false,
-        users: [...state.users.category, action.payload]
+        deletingCategory: false,
+        category: action.payload
       };
     case DELETE_CATEGORY_FAILURE:
       return {
         ...state,
-        deletingUser: false,
+        deletingCategory: false,
         error: action.payload
       };
     case UPDATE_CATEGORY_REQUEST:
       return {
         ...state,
-        updatingUser: true,
+        addingCategory: true,
         error: null
       };
     case UPDATE_CATEGORY_SUCCESS:
       return {
         ...state,
-        updatingUser: false,
-        users: [...state.users.category, action.payload]
+        addingCategory: false,
+        category: action.payload
       };
     case UPDATE_CATEGORY_FAILURE:
       return {
         ...state,
-        updatingUser: false,
+        addingCategory: false,
         error: action.payload
       };
     default:

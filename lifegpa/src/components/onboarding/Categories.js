@@ -42,11 +42,22 @@ export class Categories extends Component {
     };
 
     this.props.addCategory(newCategory);
+
+    this.setState({
+      categoryTitle: "",
+      color: ""
+    });
   };
 
   render() {
+    if (this.props.addingCategory) {
+      console.log("loading", this.props.category);
+      return <div>Loading...</div>;
+    }
+
     return (
       <div className="categories">
+        {console.log("From categories:", this.props.category)}
         <h2>Choose Your Categories</h2>
         <p>
           Add as many categories as you want, use the list below as a motivator!
@@ -58,9 +69,9 @@ export class Categories extends Component {
           <li>Work Efficiency</li>
         </ul>
         <div className="new-category">
-          {/* {this.props.category.map((category, index) => (
+          {this.props.category.map((category, index) => (
             <CategoryList key={index} category={category} />
-          ))} */}
+          ))}
         </div>
         <form onSubmit={this.handleAddCategory}>
           <input
@@ -87,8 +98,9 @@ export class Categories extends Component {
 
 const mapStateToProps = state => {
   return {
-    id: state.loginReducer.id
-    //category: state.getUserCategories.category
+    id: state.loginReducer.id,
+    category: state.userCategoryReducer.category,
+    addingCategory: state.userCategoryReducer.addingCategory
   };
 };
 

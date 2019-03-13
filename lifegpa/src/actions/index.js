@@ -17,9 +17,9 @@ export const USER_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
 export const USER_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
 
 // Add a user category
-export const ADD_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
-export const ADD_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
-export const ADD_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
+export const ADD_CATEGORY_REQUEST = "ADD_CATEGORY_REQUEST";
+export const ADD_CATEGORY_SUCCESS = "ADD_CATEGORY_SUCCESS";
+export const ADD_CATEGORY_FAILURE = "ADD_CATEGORY_FAILURE";
 
 //Get a user habits
 export const USER_HABIT_REQUEST = "USER_HABIT_REQUEST";
@@ -27,15 +27,14 @@ export const USER_HABIT_SUCCESS = "USER_HABIT_SUCCESS";
 export const USER_HABIT_FAILURE = "USER_HABIT_FAILURE";
 
 // Delete a user category
-export const DELETE_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
-export const DELETE_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
-export const DELETE_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
+export const DELETE_CATEGORY_REQUEST = "DELETE_CATEGORY_REQUEST";
+export const DELETE_CATEGORY_SUCCESS = "DELETE_CATEGORY_SUCCESS";
+export const DELETE_CATEGORY_FAILURE = "DELETE_CATEGORY_FAILURE";
 
 // Update a user category
-export const UPDATE_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
-export const UPDATE_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
-export const UPDATE_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
-
+export const UPDATE_CATEGORY_REQUEST = "UPDATE_CATEGORY_REQUEST";
+export const UPDATE_CATEGORY_SUCCESS = "UPDATE_CATEGORY_SUCCESS";
+export const UPDATE_CATEGORY_FAILURE = "UPDATE_CATEGORY_FAILURE";
 
 export const TOGGLE_DAILY = "TOGGLE_DAILY";
 export const CREATE_CIRCLE = "CREATE_CIRCLE";
@@ -82,7 +81,7 @@ export const getUserCategories = id => dispatch => {
       console.log(err);
       dispatch({
         type: USER_CATEGORY_FAILURE,
-        payload: err.response.data.message
+        payload: err
       });
     });
 };
@@ -92,14 +91,14 @@ export const addCategory = newCategory => dispatch => {
   return axiosWithAuth()
     .post(`https://lifegpa.herokuapp.com/api/categories`, newCategory)
     .then(res => {
-      console.log(res);
-      dispatch({ type: ADD_CATEGORY_SUCCESS, payload: res.data });
+      console.log("From Action add category", res.data);
+      dispatch({ type: ADD_CATEGORY_SUCCESS, payload: res.data.categories });
     })
     .catch(err => {
       console.log(err);
       dispatch({
         type: ADD_CATEGORY_FAILURE,
-        payload: err.response.data.message
+        payload: err
       });
     });
 };
