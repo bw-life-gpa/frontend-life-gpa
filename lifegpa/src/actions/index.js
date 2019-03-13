@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import moment from "moment";
 import axiosWithAuth from "../components/axiosWithAuth";
 
 //Login action creators
@@ -11,6 +12,7 @@ export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const TOGGLE_DAILY = "TOGGLE_DAILY";
 export const CREATE_CIRCLE = "CREATE_CIRCLE";
+export const CALCULATE_GPA = "CALCULATE_GPA";
 
 
 export const login = creds => dispatch => {
@@ -68,5 +70,38 @@ export const toggleDaily = (id, yn ) => dispatch => {
 
     return (
       <div>toggle</div>
+    );
+  };
+
+  // calculate GPA of a single item
+  export const calculateGPA = (created_at, completionPoints ) => dispatch => {
+    // To calculate the GPA:
+    // Take the number of "completionPoints" and
+    // divide by the number of days between "TODAY" and "created_at"
+
+    // created_at: 2019-04-02 06:37:44
+    // YYYY-MM-DD 
+
+    dispatch({ type: CALCULATE_GPA });
+
+    let a = moment(created_at, 'YYYY-MM-DD');
+    let now = moment();
+    let days = now.diff(a, 'days');
+
+    let gpa = 0;
+
+    if (days === 0) {
+      gpa = 100;
+    } else {
+      gpa = Math.floor((completionPoints / days) * 100);
+    }
+
+    return (
+      <div>
+        {/* <div>Days: {days}</div>
+        <div>Points: {completionPoints}</div>
+        <div>GPA: {gpa}%</div> */}
+        {gpa}
+      </div>
     );
   };
