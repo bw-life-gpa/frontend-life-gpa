@@ -10,12 +10,27 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
+
+// Get user category
 export const USER_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
 export const USER_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
 export const USER_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
+
+// Add a user category
 export const ADD_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
 export const ADD_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
 export const ADD_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
+
+// Delete a user category
+export const DELETE_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
+export const DELETE_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
+export const DELETE_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
+
+// Update a user category
+export const UPDATE_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
+export const UPDATE_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
+export const UPDATE_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
+
 export const TOGGLE_DAILY = "TOGGLE_DAILY";
 export const CREATE_CIRCLE = "CREATE_CIRCLE";
 export const CALCULATE_GPA = "CALCULATE_GPA";
@@ -27,6 +42,7 @@ export const login = creds => dispatch => {
     .then(res => {
       console.log(res);
       localStorage.setItem("authorization", res.data.token);
+      localStorage.setItem("userID", res.data.user.id);
       dispatch({ type: LOGIN_SUCCESS, payload: res.data.user.id });
     })
     .catch(err => {
@@ -49,12 +65,12 @@ export const register = newUser => dispatch => {
 };
 
 export const getUserCategories = id => dispatch => {
-  dispatch({ type: ADD_CATEGORY_REQUEST });
+  dispatch({ type: USER_CATEGORY_REQUEST });
   return axiosWithAuth()
     .get(`https://lifegpa.herokuapp.com/api/users/categories/${id}`)
     .then(res => {
-      console.log(res);
-      dispatch({ type: USER_CATEGORY_SUCCESS, payload: res.data });
+      console.log(res.data[0].category);
+      dispatch({ type: USER_CATEGORY_SUCCESS, payload: res.data[0].category });
     })
     .catch(err => {
       console.log(err);
@@ -68,7 +84,7 @@ export const getUserCategories = id => dispatch => {
 export const addCategory = newCategory => dispatch => {
   dispatch({ type: ADD_CATEGORY_REQUEST });
   return axiosWithAuth()
-    .post(`https://lifegpa.herokuapp.com/api/users/categories`, newCategory)
+    .post(`https://lifegpa.herokuapp.com/api/categories`, newCategory)
     .then(res => {
       console.log(res);
       dispatch({ type: ADD_CATEGORY_SUCCESS, payload: res.data });
@@ -79,6 +95,31 @@ export const addCategory = newCategory => dispatch => {
         type: ADD_CATEGORY_FAILURE,
         payload: err.response.data.message
       });
+    });
+};
+
+export const deleteCategory = id => dispatch => {
+  dispatch({ type: DELETE_CATEGORY_REQUEST });
+  return axiosWithAuth()
+    .delete(`https://lifegpa.herokuapp.com/api/categories/${id}`)
+    .then(res => {
+      console.log(res);
+      dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_CATEGORY_FAILURE, payload: err.response });
+    });
+};
+
+export const updateCategory = (id, updatedCategory) => dispatch => {
+  return axiosWithAuth()
+    .put(`https://lifegpa.herokuapp.com/api/categories/${id}`, updatedCategory)
+    .then(res => {
+      console.log(res);
+      dispatch({ type: UPDATE_CATEGORY_SUCCESS, payload: res.data });
+    })
+    .catch(err => {
+      dispatch({ type: UPDATE_CATEGORY_FAILURE, payload: err.response });
     });
 };
 
