@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import ColorPicker from "./ColorPicker";
+import { CirclePicker } from "react-color";
+import { getUserCategories } from "../../actions";
+import { connect } from "react-redux";
 import "./Categories.css";
 
 export class Categories extends Component {
@@ -8,10 +10,18 @@ export class Categories extends Component {
     color: ""
   };
 
+  componentDidMount() {
+    this.props.getUserCategories();
+  }
+
   handleCategoryChanges = e => {
     e.preventDefault();
 
     this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleChangeComplete = color => {
+    this.setState({ color: color.hex });
   };
 
   render() {
@@ -38,7 +48,10 @@ export class Categories extends Component {
             autoComplete="off"
             required
           />
-          <ColorPicker />
+          <CirclePicker
+            color={this.state.color}
+            onChangeComplete={this.handleChangeComplete}
+          />
           <button>Add Category</button>
         </form>
       </div>
@@ -46,4 +59,9 @@ export class Categories extends Component {
   }
 }
 
-export default Categories;
+const mapStateToProps = state => {};
+
+export default connect(
+  null,
+  { getUserCategories }
+)(Categories);
