@@ -9,9 +9,9 @@ export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const REGISTER_START = "REGISTER_START";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
-export const USER_REQUEST = "USER_REQUEST";
-export const USER_SUCCESS = "USER_SUCCESS";
-export const USER_FAILURE = "USER_FAILURE";
+export const USER_CATEGORY_REQUEST = "USER_CATEGORY_REQUEST";
+export const USER_CATEGORY_SUCCESS = "USER_CATEGORY_SUCCESS";
+export const USER_CATEGORY_FAILURE = "USER_CATEGORY_FAILURE";
 export const TOGGLE_DAILY = "TOGGLE_DAILY";
 export const CREATE_CIRCLE = "CREATE_CIRCLE";
 
@@ -45,16 +45,19 @@ export const register = newUser => dispatch => {
 };
 
 export const getUserCategories = id => dispatch => {
-  dispatch({ type: USER_REQUEST });
+  dispatch({ type: USER_CATEGORY_REQUEST });
   return axiosWithAuth()
     .get(`http://localhost:4444/api/users/categories/${id}`)
     .then(res => {
       console.log(res);
-      dispatch({ type: USER_SUCCESS, payload: res.data });
+      dispatch({ type: USER_CATEGORY_SUCCESS, payload: res.data });
     })
     .catch(err => {
       console.log(err);
-      dispatch({ type: USER_FAILURE, payload: err.response.data.message });
+      dispatch({
+        type: USER_CATEGORY_FAILURE,
+        payload: err.response.data.message
+      });
     });
 };
 

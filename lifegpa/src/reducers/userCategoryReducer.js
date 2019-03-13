@@ -1,4 +1,8 @@
-import { USER_REQUEST, USER_SUCCESS, USER_FAILURE } from "../actions";
+import {
+  USER_CATEGORY_REQUEST,
+  USER_CATEGORY_SUCCESS,
+  USER_CATEGORY_FAILURE
+} from "../actions";
 
 const initialState = {
   users: [],
@@ -8,19 +12,19 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
-    case USER_REQUEST:
+    case USER_CATEGORY_REQUEST:
       return {
         ...state,
         fetchingUser: true,
         error: null
       };
-    case USER_SUCCESS:
+    case USER_CATEGORY_SUCCESS:
       return {
         ...state,
         fetchingUser: false,
         users: [...state.users, action.payload]
       };
-    case USER_FAILURE:
+    case USER_CATEGORY_FAILURE:
       return {
         ...state,
         fetchingUser: false,
