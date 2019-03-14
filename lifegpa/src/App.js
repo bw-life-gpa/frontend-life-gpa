@@ -26,10 +26,14 @@ class App extends Component {
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <Route exact path="/onboarding" component={Introduction} />
         <Route exact path="/onboarding/categories" component={Categories} />
-        <Route path="/onboarding/categories/habits" component={Habits} />
+        <Route path="/onboarding/habits" component={Habits} />
         <Route exact path="/daily" component={Daily} />
         <Route exact path="/details" component={Details} />
-        <Route exact path="/details/:categoryTitle" component={CategoryDetail} />
+        <Route
+          exact
+          path="/details/:categoryTitle"
+          component={CategoryDetail}
+        />
       </div>
     );
   }

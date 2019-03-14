@@ -20,10 +20,18 @@ form {
 }
 
 .category-added {
+  display: flex;
+  justify-content: space-between;
   max-width: 300px;
   width: 100%;
   margin: 20px auto;
   border-radius: 10px;
+}
+
+.category-text {
+  margin: 20px 20px;
+  display: flex;
+  align-items: center;
 }
 
 input {
