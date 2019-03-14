@@ -16,6 +16,16 @@
 .daily-habit-name {
     font-weight: bold;
 }
+.daily-habit-name-yes {
+    font-weight: bold;
+    text-decoration: line-through;
+    color: blue;
+}
+.daily-habit-name-no {
+    font-weight: bold;
+    text-decoration: line-through;
+    color: red;
+}
 
 .daily-habit-buttons button{
     background-color: white;
