@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { CirclePicker } from "react-color";
 import CategoryList from "./CategoryList";
-import { getUserCategories, addCategory } from "../../actions";
+import { Link } from "react-router-dom";
+import { getUserCategories, addCategory, deleteCategory } from "../../actions";
 import { connect } from "react-redux";
 import "./Categories.css";
 
@@ -49,12 +50,14 @@ export class Categories extends Component {
     });
   };
 
-  render() {
-    if (this.props.addingCategory) {
-      console.log("loading", this.props.category);
-      return <div>Loading...</div>;
-    }
+  handleDeleteCategory = (e, id) => {
+    e.preventDefault();
 
+    this.props.deleteCategory(id);
+    this.props.getUserCategories(this.getUserID());
+  };
+
+  render() {
     return (
       <div className="categories">
         {console.log("From categories:", this.props.category)}
@@ -70,7 +73,11 @@ export class Categories extends Component {
         </ul>
         <div className="new-category">
           {this.props.category.map((category, index) => (
-            <CategoryList key={index} category={category} />
+            <CategoryList
+              key={index}
+              category={category}
+              handleDeleteCategory={this.handleDeleteCategory}
+            />
           ))}
         </div>
         <form onSubmit={this.handleAddCategory}>
@@ -78,7 +85,7 @@ export class Categories extends Component {
             className="add-category"
             type="text"
             name="categoryTitle"
-            value={this.state.category}
+            value={this.state.categoryTitle}
             onChange={this.handleCategoryChanges}
             placeholder="Enter Category"
             autoComplete="off"
@@ -91,6 +98,9 @@ export class Categories extends Component {
           />
           <button>Add Category</button>
         </form>
+        <Link to="/onboarding/habits">
+          <button>Continue</button>
+        </Link>
       </div>
     );
   }
@@ -106,5 +116,5 @@ const mapStateToProps = state => {
 
 export default connect(
   mapStateToProps,
-  { getUserCategories, addCategory }
+  { getUserCategories, addCategory, deleteCategory }
 )(Categories);
