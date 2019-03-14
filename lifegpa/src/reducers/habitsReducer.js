@@ -10,58 +10,20 @@ import {
   DELETE_HABIT_FAILURE,
   UPDATE_HABIT_REQUEST,
   UPDATE_HABIT_SUCCESS,
-  UPDATE_HABIT_FAILURE
+  UPDATE_HABIT_FAILURE,
+  TOGGLING,
+  TOGGLING_SUCCESS,
+  TOGGLING_FAILURE
 } from "../actions";
 
 const initialState = {
-  habits: [
-    // {   "id": 2,
-    //     "habitTitle": "Run 10km",
-    //     "category": "Health",
-    //     "completed": false,
-    //     "completionPoints": 1,
-    //     "userId": 2,
-    //     "created_at": "2019-03-10 19:59:15"},
-    // {   "id": 3,
-    //     "habitTitle": 'Clean Garage',
-    //     "category": "House",
-    //     "completed": false,
-    //     "completionPoints": 0,
-    //     "userId": 2,
-    //     "created_at": "2019-03-09 19:59:15"},
-    // {   "id": 4,
-    //     "habitTitle": "Make Money",
-    //     "category": "Work",
-    //     "completed": false,
-    //     "completionPoints": 0,
-    //     "userId": 2,
-    //     "created_at": "2019-03-08 19:59:15"},
-    // {   "id": 5,
-    //     "habitTitle": "Workout",
-    //     "category": "Health",
-    //     "completed": false,
-    //     "completionPoints": 2,
-    //     "userId": 2,
-    //     "created_at": "2019-03-08 19:59:15"},
-    // {   "id": 6,
-    //     "habitTitle": 'Make Dinner',
-    //     "category": "House",
-    //     "completed": false,
-    //     "completionPoints": 3,
-    //     "userId": 2,
-    //     "created_at": "2019-03-09 19:59:15"},
-    // {   "id": 7,
-    //     "habitTitle": "File Documents",
-    //     "category": "Work",
-    //     "completed": false,
-    //     "completionPoints": 2,
-    //     "userId": 2,
-    //     "created_at": "2019-03-09 19:59:15"},
-  ],
+  habits: [],
   fetchingHabit: false,
   addingHabit: false,
   deletingHabit: false,
   updatingHabit: false,
+  updatingHabitCompleted: false,
+  reported: false,
   error: null
 };
 
@@ -77,7 +39,6 @@ export default (state = initialState, action) => {
       return {
         ...state,
         fetchingHabit: false,
-        //   habits: [...state.habits, action.payload]
         habits: action.payload
       };
     case USER_HABIT_FAILURE:
@@ -138,6 +99,34 @@ export default (state = initialState, action) => {
         updatingHabit: false,
         error: action.payload
       };
+      case TOGGLING:
+        return {
+          ...state,
+          updatingHabitCompleted: true,
+          reported: false,
+          error: null
+        };
+    case TOGGLING_SUCCESS:
+        let updatedHabit = [...state.habits];
+        let habitIndex = updatedHabit.findIndex(habit => habit.id === action.payload.id);
+        updatedHabit[habitIndex] = {...updatedHabit[habitIndex],
+        completed: action.payload.completed,
+        completionPoints: action.payload.completionPoints
+    };
+
+        return {
+          ...state,
+          updatingHabitCompleted: false,
+          reported: true,
+          habits:  updatedHabit
+        };
+    case TOGGLING_FAILURE:
+        return {
+          ...state,
+          updatingHabitCompleted: false,
+          reported: false,
+          error: action.payload
+        };
     default:
       return state;
   }

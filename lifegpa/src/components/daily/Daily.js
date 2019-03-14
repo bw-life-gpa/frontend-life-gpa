@@ -40,7 +40,7 @@ class Daily extends Component {
                 <h2> Daily Report </h2>
                 {(this.state.habits.length === 0 || this.state.habits.length === null || this.state.habits.length === undefined) 
                     ? <div>You do not have any habits, please go add them.</div>
-                    : this.props.habits.map(e => (<DailyHabit habit={e} key={e.name}/> ))}
+                    : this.props.habits.map(e => (<DailyHabit habit={e} key={e.id}/> ))}
             </div>
         );}
     }
@@ -48,7 +48,8 @@ class Daily extends Component {
 
 // export default Dashboard;
 const mapStateToProps = state => ({
-    habits: state.habitsReducer.habits
+    habits: state.habitsReducer.habits,
+    fetchingCategories: state.habitsReducer.fetchingCategories
 });
 
 export default connect(

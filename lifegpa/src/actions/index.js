@@ -31,6 +31,11 @@ export const UPDATE_CATEGORY_REQUEST = "UPDATE_CATEGORY_REQUEST";
 export const UPDATE_CATEGORY_SUCCESS = "UPDATE_CATEGORY_SUCCESS";
 export const UPDATE_CATEGORY_FAILURE = "UPDATE_CATEGORY_FAILURE";
 
+// Update habit for daily report
+export const TOGGLING = "TOGGLING";
+export const TOGGLING_SUCCESS = "TOGGLING_SUCCESS";
+export const TOGGLING_FAILURE = "TOGGLING_FAILURE";
+
 //Get a user habits
 export const USER_HABIT_REQUEST = "USER_HABIT_REQUEST";
 export const USER_HABIT_SUCCESS = "USER_HABIT_SUCCESS";
@@ -51,7 +56,6 @@ export const UPDATE_HABIT_REQUEST = "UPDATE_HABIT_REQUEST";
 export const UPDATE_HABIT_SUCCESS = "UPDATE_HABIT_SUCCESS";
 export const UPDATE_HABIT_FAILURE = "UPDATE_HABIT_FAILURE";
 
-export const TOGGLE_DAILY = "TOGGLE_DAILY";
 export const CREATE_CIRCLE = "CREATE_CIRCLE";
 export const CALCULATE_GPA = "CALCULATE_GPA";
 
@@ -256,9 +260,23 @@ export const circleCreator = (gpa, color, title) => dispatch => {
   );
 };
 
-export const toggleDaily = (id, yn) => dispatch => {
-  dispatch({ type: TOGGLE_DAILY });
-  return <div>toggle</div>;
+
+export const toggleDaily = (id, updatedHabit) => dispatch => {
+  // To update a habit as completed need to: 
+  // increment completionPoints
+  // updatedHabit.completionPoints += 1
+
+  // id, completed, completionPoints
+  dispatch({ type: TOGGLING });
+  return axiosWithAuth()
+    .put(`https://lifegpa.herokuapp.com/api/habits/${id}`, updatedHabit)
+    .then(res => {
+      console.log(res);
+      dispatch({ type: TOGGLING_SUCCESS, payload: {...res.data.updated, id} });
+    })
+    .catch(err => {
+      dispatch({ type: TOGGLING_FAILURE, payload: err.response });
+    });
 };
 
 // calculate GPA of a single item
