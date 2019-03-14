@@ -60,7 +60,6 @@ export class Categories extends Component {
   render() {
     return (
       <div className="categories">
-        {console.log("From categories:", this.props.category)}
         <h2>Choose Your Categories</h2>
         <p>
           <b>Step 1: </b>Add as many categories as you want, use the list below
