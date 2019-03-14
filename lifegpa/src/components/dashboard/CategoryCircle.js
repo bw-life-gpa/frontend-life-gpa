@@ -8,7 +8,7 @@ const CategoryCircle = props => {
     return (
         <div className="category-circle">
             {props.circleCreator(props.category.gpa, props.category.color, props.category.categoryTitle)}
-            <Link to={`/details/${props.category.categoryTitle}`}> 
+            <Link to={`/details/${props.category.id}`}> 
                 <button className="details-button">Details</button> 
             </Link>
            

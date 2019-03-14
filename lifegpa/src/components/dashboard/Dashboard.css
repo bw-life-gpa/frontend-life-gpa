@@ -80,9 +80,24 @@
     align-items: center;
 }
 
-.details-category {
+.details-category-habits {
     margin-top: 100px;
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     align-items: center;
+}
+
+.details-category-habits h2 {
+
+}
+
+.details-category-circles{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between; 
+}
+
+.habit-circle {
+    margin: 50px;
 }
