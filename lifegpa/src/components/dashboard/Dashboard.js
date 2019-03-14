@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import moment from 'moment';
@@ -65,16 +65,21 @@ class Dashboard extends Component {
                 <Link to={`/details`}> <button className="dashboard-button">Details</button> </Link>
                 
                 <Link to={`/daily`}> <button className="dashboard-button">Begin Daily Report</button> </Link>
+          <Link to={`/settings`}> <button className="dashboard-button">Settings</button>{" "}
+        </Link>
             </div>
         );
     }}
 }
 
 const mapStateToProps = state => ({
+
     habits: state.habitsReducer.habits
+
 });
 
 export default connect(
   mapStateToProps,
   { getUserHabits }
 )(Dashboard);
+
