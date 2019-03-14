@@ -22,14 +22,10 @@ class Details extends Component {
 
     calculateCategoryGPA = (categoryID) => {
         // filter on all habits from a user
-        // habitsObject = this.props.getCategoryHabits(categoryID);
-
 
         let days = 0;
         let now = moment();
         let completionPoints = 0;
-
-
 
         for (let i = 0; i < this.props.habits.length; i++) {
 
@@ -44,16 +40,12 @@ class Details extends Component {
 
         }
 
-        console.log("days", days)
-        console.log("completionPoints", completionPoints)
-
         let gpa = 0;
         if (days === 0) {
             gpa = 100;
         } else {
             gpa = Math.floor((completionPoints / days) * 100);
         }
-        console.log("gpa ", gpa)
 
         return gpa
 
@@ -78,7 +70,7 @@ class Details extends Component {
     }
 }
 
-// export default Dashboard;
+
 const mapStateToProps = state => ({
     categories: state.userCategoryReducer.category,
     habits: state.habitsReducer.habits

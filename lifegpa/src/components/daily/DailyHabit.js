@@ -11,14 +11,10 @@ class DailyHabit extends Component {
     };
 
     componentDidMount() {
-        // Set the state to the currently selected habit
-        // let reducedHabit = this.props.habit.filter(e => this.props.habit.id === e.id);
-        // this.setState({ habit: reducedHabit[0] });
     }
 
     handleToggle = e => {
         e.preventDefault();
-        console.log(e.target.id);
 
         // There are several states:
         // The user has not clicked on the YES or NO button: 'reported' is false, 
@@ -37,31 +33,19 @@ class DailyHabit extends Component {
 
         let newPoints = this.props.habit.completionPoints;
         let isCompleted = this.props.habit.completed;
-        console.log("e.target.id", e.target.id);
-        console.log("newpoints", newPoints);
-        console.log("isCompleted", isCompleted);
-        console.log("reported", this.state.reported);
-        console.log("completed", this.props.habit.completed);
-        console.log("points", this.props.habit.completionPoints);
 
         if (this.state.reported === false) {
-            console.log("state 1");
             if (e.target.id === "yes") {
-                console.log("state 2");
                 isCompleted = 1;
                 newPoints = newPoints + 1;
             } else {
-                console.log("state 3");
                 isCompleted = 0;
             }
         }
         if (this.state.reported && this.props.habit.completed === 1) {
-            console.log("state 4");
             if (e.target.id === "yes") {
-                console.log("state 5");
                 isCompleted = 1;
             } else {
-                console.log("state 6");
                 isCompleted = 0;
                 newPoints = newPoints - 1;
             }

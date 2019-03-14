@@ -10,13 +10,6 @@ class CategoryDetail extends Component {
         const categoryID = this.getCategoryID();
         this.props.getUserCategories(this.getUserID())
         this.props.getCategoryHabits(categoryID)
-
-        // console.log("this.props.categories after then", this.props.categories)
-        // let reducedCategory = this.props.categories.filter(e => this.state.categoryID == e.id );
-        // console.log("reduced category", reducedCategory)
-        // this.setState({ reducedCategory: reducedCategory[0] });
-        // this.getReducedCategory();
-        // this.setState({ reducedCategory: reducedCategory })
     }
 
     getUserID = () => {
@@ -31,19 +24,6 @@ class CategoryDetail extends Component {
         return categoryID;
     };
 
-    //   getReducedCategory = () => {
-    //     // const categoryID = this.getCategoryID()
-    //     let userCategories = this.props.categories;
-    //     console.log("this.props.category FUNC", userCategories);
-    //     console.log("this.state.categoryID FUNC", this.props.match.params.id);
-    //     let reducedCategory = userCategories.filter(e => parseInt(this.props.match.params.id, 10) == parseInt(e.id, 10) );
-    //     // let reducedCategory = this.props.categories.filter(e => console.log("e FUNC", e.id) );
-    //     console.log("reducedCategory FUNC", reducedCategory);
-    //     this.setState({ reducedCategory: reducedCategory });
-    //     // this.setState({ ...this.state, reducedCategory: reducedCategory });
-    //     return reducedCategory;
-    //   };
-
 
 
     render() {
@@ -54,7 +34,7 @@ class CategoryDetail extends Component {
             )
         } else {
             // console.log(this.state)
-            let reducedCategory = this.props.categories.find(e => this.state.categoryID == e.id);
+            let reducedCategory = this.props.categories.find(e => parseInt(this.state.categoryID) === parseInt(e.id));
             // console.log("reduced category", reducedCategory)
             return (
                 <div className="details-category-wrapper">

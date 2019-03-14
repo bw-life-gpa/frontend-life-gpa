@@ -10,12 +10,6 @@ import { getUserHabits } from '../../actions';
 
 
 class Dashboard extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         GPA: [],
-    //     };
-    // }
 
     componentDidMount() {
         this.props.getUserHabits(this.getUserID())
@@ -39,16 +33,12 @@ class Dashboard extends Component {
         for (let i = 0; i < this.props.habits.length; i++) {
 
             let habit = this.props.habits[i];
-        
-                let a = moment(habit.created_at, "YYYY-MM-DD");
-                days += now.diff(a, "days");
+            let a = moment(habit.created_at, "YYYY-MM-DD");
+            days += now.diff(a, "days");
 
-                completionPoints += habit.completionPoints;
+            completionPoints += habit.completionPoints;
 
         }
-
-        console.log("days", days)
-        console.log("completionPoints", completionPoints)
 
         let gpa = 0;
         if (days === 0) {
@@ -56,7 +46,6 @@ class Dashboard extends Component {
         } else {
             gpa = Math.floor((completionPoints / days) * 100);
         }
-        console.log("gpa ", gpa)
 
         return gpa
 
@@ -81,9 +70,7 @@ class Dashboard extends Component {
     }}
 }
 
-// export default Dashboard;
 const mapStateToProps = state => ({
-    // GPA: state.dashboardReducer.GPA
     habits: state.habitsReducer.habits
 });
 
