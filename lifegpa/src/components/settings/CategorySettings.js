@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import { CirclePicker } from "react-color";
-import CategoryList from "./CategoryList";
+import CategoryList from "../onboarding/CategoryList";
 import { Link } from "react-router-dom";
 import { getUserCategories, addCategory, deleteCategory } from "../../actions";
 import { connect } from "react-redux";
-import "./Categories.css";
+import "../onboarding/Categories.css";
 
-export class Categories extends Component {
+export class CategorySettings extends Component {
   state = {
     categoryTitle: "",
     color: "",
@@ -60,18 +60,7 @@ export class Categories extends Component {
   render() {
     return (
       <div className="categories">
-        {console.log("From categories:", this.props.category)}
-        <h2>Choose Your Categories</h2>
-        <p>
-          <b>Step 1: </b>Add as many categories as you want, use the list below
-          as a motivator!
-        </p>
-        <ul>
-          <li>Health</li>
-          <li>Physical Fitness</li>
-          <li>Studying</li>
-          <li>Work Efficiency</li>
-        </ul>
+        <h2>Edit Your Categories</h2>
         <div className="new-category">
           {this.props.category.map((category, index) => (
             <CategoryList
@@ -81,10 +70,6 @@ export class Categories extends Component {
             />
           ))}
         </div>
-        <p>
-          <b>Step 2: </b>When adding a category, make sure to write a short
-          category title and select a color.
-        </p>
         <form className="category-form" onSubmit={this.handleAddCategory}>
           <input
             className="add-category"
@@ -101,14 +86,10 @@ export class Categories extends Component {
             color={this.state.color}
             onChangeComplete={this.handleChangeComplete}
           />
-          <button className="add-category">Add Category</button>
+          <button>Add Category</button>
         </form>
-        <p>
-          <b>Step 3: </b>After you have added all your categories, continue onto
-          choosing your habits.
-        </p>
-        <Link to="/onboarding/habits">
-          <button className="continue">Continue to Habits</button>
+        <Link to="/settings/habits">
+          <button className="continue">Continue</button>
         </Link>
       </div>
     );
@@ -126,4 +107,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { getUserCategories, addCategory, deleteCategory }
-)(Categories);
+)(CategorySettings);

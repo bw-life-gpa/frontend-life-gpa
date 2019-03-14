@@ -4,10 +4,12 @@ import "./App.css";
 
 import Categories from "./components/onboarding/Categories";
 import CategoryDetail from "./components/dashboard/CategoryDetail";
+import CategorySettings from "./components/settings/CategorySettings";
 import Daily from "./components/daily/Daily";
 import Dashboard from "./components/dashboard/Dashboard";
 import Details from "./components/dashboard/Details";
 import Habits from "./components/onboarding/Habits";
+import HabitsSettings from "./components/settings/HabitsSettings";
 import Header from "./components/header/Header";
 import Introduction from "./components/onboarding/Introduction";
 import Login from "./components/Login";
@@ -34,6 +36,8 @@ class App extends Component {
           path="/details/:categoryTitle"
           component={CategoryDetail}
         />
+        <Route exact path="/settings" component={CategorySettings} />
+        <Route exact path="/settings/habits" component={HabitsSettings} />
       </div>
     );
   }

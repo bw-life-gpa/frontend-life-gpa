@@ -1,15 +1,47 @@
 form {
-  height: 250px;
   display: block;
+  max-width: 200px;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.category-form {
+  border: none;
+  margin-top: 30px;
 }
 
 .categories {
+  max-width: 400px;
   margin: 100px auto;
+  text-align: left;
 }
 
 .color-picker {
-  margin: 20px 20px 20px 80px;
+  margin: 20px 20px 20px 40px;
   margin-right: 0;
+}
+
+p {
+  margin: 20px auto;
+  max-width: 400px;
+  width: 90%;
+}
+
+ul {
+  margin: 30px auto;
+  border: 2px solid black;
+  border-radius: 10px;
+  max-width: 400px;
+}
+
+li {
+  margin: 20px;
+  border-bottom: 3px solid rgb(23, 235, 3);
+  font-size: 20px;
+}
+
+button {
+  margin: 0 auto;
 }
 
 .box {
@@ -44,4 +76,14 @@ input {
 
 input::placeholder {
   text-align: center;
+}
+
+.continue {
+  max-width: 400px;
+  width: 100%;
+}
+
+.add-category {
+  max-width: 320px;
+  width: 100%;
 }

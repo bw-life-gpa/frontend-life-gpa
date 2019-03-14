@@ -2,18 +2,28 @@ h1 {
   text-align: center;
 }
 
+.habit-form {
+  max-width: 400px;
+  border: none;
+}
+
+.input-form {
+  display: flex;
+  border: none;
+  max-width: 400px;
+}
+
 .onboard-habits {
   margin: 100px auto;
-  max-width: 600px;
+  max-width: 400px;
   width: 100%;
   text-align: left;
 }
 
 .habit-button {
-  max-width: 300px;
+  max-width: 400px;
   width: 100%;
   margin: 0 auto;
-  /* padding: 40px; */
 }
 
 .habit-added {
@@ -23,6 +33,11 @@ h1 {
   margin: 20px auto;
   border-radius: 10px;
   text-align: center;
+}
+
+.select-category {
+  margin: auto;
+  height: 30px;
 }
 
 .habit {
@@ -62,4 +77,14 @@ h1 {
   max-width: 30%;
   width: 100%;
   margin: 20px 5px;
+}
+
+.step-two {
+  margin-top: 100px;
+}
+
+.finish {
+  max-width: 400px;
+  width: 100%;
+  margin: 30px auto;
 }
