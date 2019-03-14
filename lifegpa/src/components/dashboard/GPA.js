@@ -15,15 +15,14 @@ class GPA extends React.Component {
         <div className="GPA">
             {/* <Link to={`/details`}> */}
            <h3>Life GPA</h3>
-           {this.props.calculateGPA('2019-03-01 06:37:44', 1)}
-           {this.props.circleCreator(this.props.GPA, '#ffec26', 'LifeGPA')}
+           {this.props.circleCreator(this.props.gpa, '#ffec26', 'LifeGPA')}
         </div>
     )}
 };
 
 
 const mapStateToProps = state => ({
-    GPA: state.dashboardReducer.GPA
+    // GPA: state.dashboardReducer.GPA
 });
 
 export default connect(

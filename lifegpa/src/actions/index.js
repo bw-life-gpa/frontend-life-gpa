@@ -63,6 +63,8 @@ export const UPDATE_HABIT_FAILURE = "UPDATE_HABIT_FAILURE";
 
 export const CREATE_CIRCLE = "CREATE_CIRCLE";
 export const CALCULATE_GPA = "CALCULATE_GPA";
+export const CALCULATE_CATEGORY_GPA = "CALCULATE_CATEGORY_GPA";
+
 
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_REQUEST });
@@ -329,38 +331,68 @@ export const calculateGPA = (created_at, completionPoints) => dispatch => {
   
 };
 
-// // calculate GPA of a category
-// export const calculateCategoryGPA = (category) => dispatch => {
+// calculate GPA of a category
+export const calculateCategoryGPA = (habitsObject) => dispatch => {
 
-//   // map over the categories
-//   // pull out the total number of completion points
-//   // pull out the total number of days
-//   // run the calculate GPA function on that
+  // map over the category habits
+  // pull out the total number of completion points
+  // pull out the total number of days
+  // run the calculate GPA function on that
 
 
-//   dispatch({ type: CALCULATE_CATEGORY_GPA });
+  dispatch({ type: CALCULATE_CATEGORY_GPA });
+  console.log("habitsObject", habitsObject)
 
-//   let a = moment(created_at, "YYYY-MM-DD");
-//   let now = moment();
-//   let days = now.diff(a, "days");
+  let days = 0;
+  let now = moment();
+  let completionPoints = 0;
 
-//   let gpa = 0;
+  for (let i = 0; i < habitsObject.length; i++) {
 
-//   if (days === 0) {
-//     gpa = 100;
-//   } else {
-//     gpa = Math.floor((completionPoints / days) * 100);
-//   }
+    let a = moment(habitsObject[i].created_at, "YYYY-MM-DD");
+    days += now.diff(a, "days");
 
-//   return (
-//     <div>
-//       {/* <div>Days: {days}</div>
-//         <div>Points: {completionPoints}</div>
-//         <div>GPA: {gpa}%</div> */}
-//       {gpa}
-//     </div>
-//   );
-// };
+    completionPoints += habitsObject[i].completionPoints;
+    
+  }
+  
+  // console.log("days first", days)
+  // days = habitsObject.map(e => {
+  //   let a = moment(e.created_at, "YYYY-MM-DD");
+  //   let now = moment();
+  //   days += now.diff(a, "days");
+  //   return days
+  // });
+
+  // days = days[days.length - 1]
+
+  console.log("days after", days)
+
+
+  
+  // console.log("completionPoints first", completionPoints)
+  // completionPoints = habitsObject.map(e => {
+  //   completionPoints = completionPoints + e.completionPoints;
+  //   return completionPoints
+  // });
+
+  // completionPoints = completionPoints[completionPoints.length - 1]
+  console.log("completionPoints after", completionPoints)
+
+
+  let gpa = 0;
+  console.log("gpa first", gpa)
+  if (days === 0) {
+    gpa = 100;
+  } else {
+    gpa = Math.floor(( completionPoints / days) * 100);
+  }
+  console.log("gpa after", gpa)
+
+
+  return gpa
+
+};
 
 // // calculate GPA of a category
 // export const calculateLifeGPA = (category) => dispatch => {

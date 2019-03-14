@@ -25,6 +25,7 @@ const initialState = {
   addingCategory: false,
   habits: [],
   fetchingHabits: false,
+  gotHabits: false,
   error: null
 };
 
@@ -104,18 +105,21 @@ export default (state = initialState, action) => {
       return {
         ...state,
         fetchingHabits: true,
+        gotHabits: false,
         error: null
       };
     case GET_HABITS_BY_CATEGORY_SUCCESS:
       return {
         ...state,
         fetchingHabits: false,
+        gotHabits: true,
         habits: action.payload
       };
     case GET_HABITS_BY_CATEGORY_FAILURE:
       return {
         ...state,
         fetchingHabits: false,
+        gotHabits: false,
         error: action.payload
       };
     default:

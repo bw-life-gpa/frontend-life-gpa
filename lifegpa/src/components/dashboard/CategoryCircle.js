@@ -1,28 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { connect } from "react-redux";
 import { Link } from 'react-router-dom';
 import { circleCreator } from '../../actions';
 
-const CategoryCircle = props => {
+class CategoryCircle extends Component {
 
+    render() {
     return (
+        
         <div className="category-circle">
-            {props.circleCreator(props.category.gpa, props.category.color, props.category.categoryTitle)}
-            <Link to={`/details/${props.category.id}`}> 
+            {this.props.circleCreator(this.props.gpa, this.props.category.color, this.props.category.categoryTitle)}
+            <Link to={`/details/${this.props.category.id}`}> 
                 <button className="details-button">Details</button> 
             </Link>
-           
-
+        
         </div>
-    );
+    );}
 };
 
-
-const mapStateToProps = state => ({
-    // habit: state.dashboardReducer.habit
-});
-
 export default connect(
-    mapStateToProps,
+    null,
      { circleCreator }
 )(CategoryCircle);
