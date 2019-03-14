@@ -70,8 +70,7 @@ export default (state = initialState, action) => {
     case DELETE_CATEGORY_SUCCESS:
       return {
         ...state,
-        deletingCategory: false,
-        category: action.payload
+        deletingCategory: false
       };
     case DELETE_CATEGORY_FAILURE:
       return {
@@ -82,19 +81,18 @@ export default (state = initialState, action) => {
     case UPDATE_CATEGORY_REQUEST:
       return {
         ...state,
-        addingCategory: true,
+        updatingCategory: true,
         error: null
       };
     case UPDATE_CATEGORY_SUCCESS:
       return {
         ...state,
-        addingCategory: false,
-        category: action.payload
+        updatingCategory: false
       };
     case UPDATE_CATEGORY_FAILURE:
       return {
         ...state,
-        addingCategory: false,
+        updatingCategory: false,
         error: action.payload
       };
     default:

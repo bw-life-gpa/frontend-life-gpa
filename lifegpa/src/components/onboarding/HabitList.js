@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { getUserCategories, updateCategory } from "../../actions";
+import { getUserCategories, getUserHabits, updateHabit } from "../../actions";
 import { connect } from "react-redux";
-import "./Categories.css";
+import "./Habits.css";
 
-export class CategoryList extends Component {
+export class HabitList extends Component {
   state = {
-    categoryTitle: "",
+    habitTitle: "",
     isEditing: false
   };
 
@@ -19,21 +19,21 @@ export class CategoryList extends Component {
     this.setState({ [e.target.name]: e.target.value });
   };
 
-  handleUpdateCategory = (e, id) => {
+  handleUpdateHabit = (e, id) => {
     e.preventDefault();
 
-    const updatedCategory = {
-      categoryTitle: this.state.categoryTitle
+    const updatedHabit = {
+      habitTitle: this.state.habitTitle
     };
 
-    this.props.updateCategory(id, updatedCategory);
+    this.props.updateHabit(id, updatedHabit);
 
     this.setState({
-      categoryTitle: ""
+      habitTitle: ""
     });
 
     this.toggleEdit();
-    this.props.getUserCategories(this.getUserID());
+    this.props.getUserHabits(this.getUserID());
   };
 
   getUserID = () => {
@@ -44,27 +44,15 @@ export class CategoryList extends Component {
   render() {
     if (this.state.isEditing === false) {
       return (
-        <div
-          className="category-added"
-          style={{ border: `2px solid ${this.props.category.color}` }}
-        >
-          <p
-            className="category-text"
-            style={{
-              color: this.props.category.color
-            }}
-          >
-            {this.props.category.categoryTitle}
-          </p>
+        <div className="habit-added" style={{ border: `2px solid black` }}>
+          <p className="habit">{this.props.habit.habitTitle} </p>
           <div className="buttons">
             <button className="edit-button" onClick={this.toggleEdit}>
               Edit
             </button>
             <span
               className="delete"
-              onClick={e =>
-                this.props.handleDeleteCategory(e, this.props.category.id)
-              }
+              onClick={e => this.props.handleDeleteHabit(e, this.props.id)}
             >
               X
             </span>
@@ -75,14 +63,12 @@ export class CategoryList extends Component {
       return (
         <div>
           {console.log(this.props.id)}
-          <form
-            onSubmit={e => this.handleUpdateCategory(e, this.props.category.id)}
-          >
+          <form onSubmit={e => this.handleUpdateHabit(e, this.props.habit.id)}>
             <input
               type="text"
-              name="categoryTitle"
-              value={this.state.categoryTitle}
-              placeholder="Edit Category"
+              name="habitTitle"
+              value={this.state.habitTitle}
+              placeholder="Edit Habit"
               onChange={this.handleEditChanges}
               autoComplete="off"
               required
@@ -98,11 +84,13 @@ export class CategoryList extends Component {
 
 const mapStateToProps = state => {
   return {
-    updatingCategory: state.userCategoryReducer.updatingCategory
+    category: state.userCategoryReducer.category,
+    habits: state.habitsReducer.habits,
+    updatingHabit: state.habitsReducer.updatingHabit
   };
 };
 
 export default connect(
   mapStateToProps,
-  { getUserCategories, updateCategory }
-)(CategoryList);
+  { getUserCategories, getUserHabits, updateHabit }
+)(HabitList);

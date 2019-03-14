@@ -21,11 +21,6 @@ export const ADD_CATEGORY_REQUEST = "ADD_CATEGORY_REQUEST";
 export const ADD_CATEGORY_SUCCESS = "ADD_CATEGORY_SUCCESS";
 export const ADD_CATEGORY_FAILURE = "ADD_CATEGORY_FAILURE";
 
-//Get a user habits
-export const USER_HABIT_REQUEST = "USER_HABIT_REQUEST";
-export const USER_HABIT_SUCCESS = "USER_HABIT_SUCCESS";
-export const USER_HABIT_FAILURE = "USER_HABIT_FAILURE";
-
 // Delete a user category
 export const DELETE_CATEGORY_REQUEST = "DELETE_CATEGORY_REQUEST";
 export const DELETE_CATEGORY_SUCCESS = "DELETE_CATEGORY_SUCCESS";
@@ -40,6 +35,26 @@ export const UPDATE_CATEGORY_FAILURE = "UPDATE_CATEGORY_FAILURE";
 export const TOGGLING = "TOGGLING";
 export const TOGGLING_SUCCESS = "TOGGLING_SUCCESS";
 export const TOGGLING_FAILURE = "TOGGLING_FAILURE";
+
+//Get a user habits
+export const USER_HABIT_REQUEST = "USER_HABIT_REQUEST";
+export const USER_HABIT_SUCCESS = "USER_HABIT_SUCCESS";
+export const USER_HABIT_FAILURE = "USER_HABIT_FAILURE";
+
+// Add a user habit
+export const ADD_HABIT_REQUEST = "ADD_HABIT_REQUEST";
+export const ADD_HABIT_SUCCESS = "ADD_HABIT_SUCCESS";
+export const ADD_HABIT_FAILURE = "ADD_HABIT_FAILURE";
+
+// Delete a user habit
+export const DELETE_HABIT_REQUEST = "DELETE_HABIT_REQUEST";
+export const DELETE_HABIT_SUCCESS = "DELETE_HABIT_SUCCESS";
+export const DELETE_HABIT_FAILURE = "DELETE_HABIT_FAILURE";
+
+// Update a user habit
+export const UPDATE_HABIT_REQUEST = "UPDATE_HABIT_REQUEST";
+export const UPDATE_HABIT_SUCCESS = "UPDATE_HABIT_SUCCESS";
+export const UPDATE_HABIT_FAILURE = "UPDATE_HABIT_FAILURE";
 
 export const CREATE_CIRCLE = "CREATE_CIRCLE";
 export const CALCULATE_GPA = "CALCULATE_GPA";
@@ -113,7 +128,7 @@ export const deleteCategory = id => dispatch => {
     .delete(`https://lifegpa.herokuapp.com/api/categories/${id}`)
     .then(res => {
       console.log(res);
-      dispatch({ type: DELETE_CATEGORY_SUCCESS, payload: res.data });
+      dispatch({ type: DELETE_CATEGORY_SUCCESS });
     })
     .catch(err => {
       dispatch({ type: DELETE_CATEGORY_FAILURE, payload: err.response });
@@ -125,7 +140,7 @@ export const updateCategory = (id, updatedCategory) => dispatch => {
     .put(`https://lifegpa.herokuapp.com/api/categories/${id}`, updatedCategory)
     .then(res => {
       console.log(res);
-      dispatch({ type: UPDATE_CATEGORY_SUCCESS, payload: res.data });
+      dispatch({ type: UPDATE_CATEGORY_SUCCESS });
     })
     .catch(err => {
       dispatch({ type: UPDATE_CATEGORY_FAILURE, payload: err.response });
@@ -146,6 +161,52 @@ export const getUserHabits = id => dispatch => {
         type: USER_HABIT_FAILURE,
         payload: err.response.data.message
       });
+    });
+};
+
+export const addHabit = newHabit => dispatch => {
+  dispatch({ type: ADD_HABIT_REQUEST });
+  return axiosWithAuth()
+    .post(`https://lifegpa.herokuapp.com/api/habits`, newHabit)
+    .then(res => {
+      console.log("From Action add habit", res.data);
+      dispatch({ type: ADD_HABIT_SUCCESS, payload: res.data.habit });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: ADD_HABIT_FAILURE,
+        payload: err
+      });
+    });
+};
+
+export const deleteHabit = id => dispatch => {
+  dispatch({ type: DELETE_HABIT_REQUEST });
+  return axiosWithAuth()
+    .delete(`https://lifegpa.herokuapp.com/api/habits/${id}`)
+    .then(res => {
+      console.log("From delete action", res.data);
+      dispatch({ type: DELETE_HABIT_SUCCESS });
+    })
+    .catch(err => {
+      dispatch({ type: DELETE_HABIT_FAILURE, payload: err.response });
+    });
+};
+
+export const updateHabit = (id, updatedHabit) => dispatch => {
+  dispatch({ type: UPDATE_HABIT_REQUEST });
+  return axiosWithAuth()
+    .put(`https://lifegpa.herokuapp.com/api/habits/${id}`, updatedHabit)
+    .then(res => {
+      console.log(res.data);
+      dispatch({
+        type: UPDATE_HABIT_SUCCESS,
+        payload: res.data.updated.habitTitle
+      });
+    })
+    .catch(err => {
+      dispatch({ type: UPDATE_HABIT_FAILURE, payload: err.response });
     });
 };
 
