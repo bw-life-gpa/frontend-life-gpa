@@ -22,6 +22,7 @@ class App extends Component {
       <div className="App">
         <Header />
 
+        <h1>Welcome to lifeGPA</h1>
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
 
@@ -33,7 +34,7 @@ class App extends Component {
         <Route exact path="/details" component={Details} />
         <Route
           exact
-          path="/details/:categoryTitle"
+          path="/details/:id"
           component={CategoryDetail}
         />
         <Route exact path="/settings" component={CategorySettings} />

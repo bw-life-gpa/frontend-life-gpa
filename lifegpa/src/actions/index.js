@@ -31,6 +31,11 @@ export const UPDATE_CATEGORY_REQUEST = "UPDATE_CATEGORY_REQUEST";
 export const UPDATE_CATEGORY_SUCCESS = "UPDATE_CATEGORY_SUCCESS";
 export const UPDATE_CATEGORY_FAILURE = "UPDATE_CATEGORY_FAILURE";
 
+// Get all habits by category
+export const GET_HABITS_BY_CATEGORY_REQUEST = "GET_HABITS_BY_CATEGORY_REQUEST";
+export const GET_HABITS_BY_CATEGORY_SUCCESS = "GET_HABITS_BY_CATEGORY_SUCCESS";
+export const GET_HABITS_BY_CATEGORY_FAILURE = "GET_HABITS_BY_CATEGORY_FAILURE";
+
 // Update habit for daily report
 export const TOGGLING = "TOGGLING";
 export const TOGGLING_SUCCESS = "TOGGLING_SUCCESS";
@@ -58,6 +63,8 @@ export const UPDATE_HABIT_FAILURE = "UPDATE_HABIT_FAILURE";
 
 export const CREATE_CIRCLE = "CREATE_CIRCLE";
 export const CALCULATE_GPA = "CALCULATE_GPA";
+export const CALCULATE_CATEGORY_GPA = "CALCULATE_CATEGORY_GPA";
+
 
 export const login = creds => dispatch => {
   dispatch({ type: LOGIN_REQUEST });
@@ -147,6 +154,24 @@ export const updateCategory = (id, updatedCategory) => dispatch => {
     });
 };
 
+// Get all habits by category
+export const getCategoryHabits = id => dispatch => {
+  dispatch({ type: GET_HABITS_BY_CATEGORY_REQUEST });
+  return axiosWithAuth()
+    .get(`https://lifegpa.herokuapp.com/api/categories/habits/${id}`)
+    .then(res => {
+      console.log(res.data[0].habits);
+      dispatch({ type: GET_HABITS_BY_CATEGORY_SUCCESS, payload: res.data[0].habits });
+    })
+    .catch(err => {
+      console.log(err);
+      dispatch({
+        type: GET_HABITS_BY_CATEGORY_FAILURE,
+        payload: err
+      });
+    });
+};
+
 export const getUserHabits = id => dispatch => {
   dispatch({ type: USER_HABIT_REQUEST });
   return axiosWithAuth()
@@ -217,7 +242,7 @@ export const circleCreator = (gpa, color, title) => dispatch => {
   const dashArray = `${gpaNum},100`;
 
   return (
-    <div>
+    <div className="circle">
       {
         <svg
           width="100%"
@@ -304,12 +329,6 @@ export const calculateGPA = (created_at, completionPoints) => dispatch => {
     gpa = Math.floor((completionPoints / days) * 100);
   }
 
-  return (
-    <div>
-      {/* <div>Days: {days}</div>
-        <div>Points: {completionPoints}</div>
-        <div>GPA: {gpa}%</div> */}
-      {gpa}
-    </div>
-  );
+  return gpa
+  
 };

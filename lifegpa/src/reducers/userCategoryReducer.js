@@ -10,7 +10,10 @@ import {
   DELETE_CATEGORY_FAILURE,
   UPDATE_CATEGORY_REQUEST,
   UPDATE_CATEGORY_SUCCESS,
-  UPDATE_CATEGORY_FAILURE
+  UPDATE_CATEGORY_FAILURE,
+  GET_HABITS_BY_CATEGORY_REQUEST,
+  GET_HABITS_BY_CATEGORY_SUCCESS,
+  GET_HABITS_BY_CATEGORY_FAILURE,
 } from "../actions";
 
 const initialState = {
@@ -20,6 +23,9 @@ const initialState = {
   deletingCategory: false,
   updatingCategory: false,
   addingCategory: false,
+  habits: [],
+  fetchingHabits: false,
+  gotHabits: false,
   error: null
 };
 
@@ -93,6 +99,27 @@ export default (state = initialState, action) => {
       return {
         ...state,
         updatingCategory: false,
+        error: action.payload
+      };
+      case GET_HABITS_BY_CATEGORY_REQUEST:
+      return {
+        ...state,
+        fetchingHabits: true,
+        gotHabits: false,
+        error: null
+      };
+    case GET_HABITS_BY_CATEGORY_SUCCESS:
+      return {
+        ...state,
+        fetchingHabits: false,
+        gotHabits: true,
+        habits: action.payload
+      };
+    case GET_HABITS_BY_CATEGORY_FAILURE:
+      return {
+        ...state,
+        fetchingHabits: false,
+        gotHabits: false,
         error: action.payload
       };
     default:
