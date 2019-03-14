@@ -260,9 +260,8 @@ export const circleCreator = (gpa, color, title) => dispatch => {
   );
 };
 
-
 export const toggleDaily = (id, updatedHabit) => dispatch => {
-  // To update a habit as completed need to: 
+  // To update a habit as completed need to:
   // increment completionPoints
   // updatedHabit.completionPoints += 1
 
@@ -272,7 +271,10 @@ export const toggleDaily = (id, updatedHabit) => dispatch => {
     .put(`https://lifegpa.herokuapp.com/api/habits/${id}`, updatedHabit)
     .then(res => {
       console.log(res);
-      dispatch({ type: TOGGLING_SUCCESS, payload: {...res.data.updated, id} });
+      dispatch({
+        type: TOGGLING_SUCCESS,
+        payload: { ...res.data.updated, id }
+      });
     })
     .catch(err => {
       dispatch({ type: TOGGLING_FAILURE, payload: err.response });

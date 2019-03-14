@@ -6,11 +6,11 @@ import {
   deleteHabit
 } from "../../actions";
 import { Link } from "react-router-dom";
-import HabitList from "./HabitList";
+import HabitList from "../onboarding/HabitList";
 import { connect } from "react-redux";
-import "./Habits.css";
+import "../onboarding/Habits.css";
 
-export class Habits extends Component {
+export class HabitsSettings extends Component {
   state = {
     habitTitle: "",
     categoryId: "",
@@ -67,11 +67,7 @@ export class Habits extends Component {
 
     return (
       <div className="onboard-habits">
-        <h1>Choose Your Habits</h1>
-        <p>
-          <b>Step 1: </b>Add as many habits as you want, just like you did with
-          the categories.
-        </p>
+        <h1>Edit Your Habits</h1>
         <div className="new-habit">
           {this.props.habits.map((habit, index) => (
             <HabitList
@@ -108,12 +104,8 @@ export class Habits extends Component {
               ))}
             </select>
           </div>
-
           <button className="habit-button">Add Habit</button>
         </form>
-        <p className="step-two">
-          <b>Step 2: </b>After you have added all your habits, select finish.
-        </p>
         <Link to="/dashboard">
           <button className="finish">Finish</button>
         </Link>
@@ -134,4 +126,4 @@ const mapStateToProps = state => {
 export default connect(
   mapStateToProps,
   { getUserCategories, getUserHabits, addHabit, deleteHabit }
-)(Habits);
+)(HabitsSettings);

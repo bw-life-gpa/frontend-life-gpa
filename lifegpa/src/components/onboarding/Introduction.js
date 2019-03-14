@@ -7,19 +7,15 @@ const Introduction = () => {
     <div className="intro">
       <h2>Welcome to LifeGPA</h2>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore
-        aspernatur ad sint quis ipsa nam fuga aliquid tenetur provident atque
-        necessitatibus illo dolorem hic impedit vitae molestiae, laudantium
-        tempora quia?
+        During the registering process, you will fill out a couple of categories
+        and then a few habits that you wish to complete on a daily basis.
       </p>
       <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempore minus
-        dolore excepturi aut facere cupiditate repellendus neque deserunt, ipsam
-        voluptatibus. Optio vitae aliquam pariatur dignissimos. Magni neque
-        beatae praesentium quia?
+        After selecting your categories and habits, get ready to change your
+        life!
       </p>
       <Link to="/onboarding/categories">
-        <button>Continue</button>
+        <button className="continue">Continue</button>
       </Link>
     </div>
   );
