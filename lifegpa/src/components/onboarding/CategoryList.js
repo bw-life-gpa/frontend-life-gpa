@@ -73,9 +73,9 @@ export class CategoryList extends Component {
       );
     } else {
       return (
-        <div>
-          {console.log(this.props.id)}
+        <div className="edit-form">
           <form
+            className="edit-box"
             onSubmit={e => this.handleUpdateCategory(e, this.props.category.id)}
           >
             <input
@@ -87,9 +87,11 @@ export class CategoryList extends Component {
               autoComplete="off"
               required
             />
-            <button>Submit</button>
+            <button className="submit-btn">Submit</button>
           </form>
-          <button onClick={this.toggleEdit}>Cancel</button>
+          <button className="cancel-btn" onClick={this.toggleEdit}>
+            Cancel
+          </button>
         </div>
       );
     }

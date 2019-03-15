@@ -9,6 +9,12 @@ form {
   border: none;
   margin-top: 30px;
 }
+.edit-form {
+  max-width: 320px;
+  width: 100%;
+  margin: 0 auto;
+  border: none;
+}
 
 .categories {
   max-width: 400px;
@@ -85,5 +91,19 @@ input::placeholder {
 
 .add-category {
   max-width: 320px;
+  width: 100%;
+}
+
+.edit-box {
+  border: none;
+}
+
+.cancel-btn {
+  max-width: 100%;
+  width: 100%;
+}
+
+.submit-btn {
+  max-width: 100%;
   width: 100%;
 }

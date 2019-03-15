@@ -88,3 +88,17 @@ h1 {
   width: 100%;
   margin: 30px auto;
 }
+
+.edit-box {
+  border: none;
+}
+
+.cancel-btn {
+  max-width: 100%;
+  width: 100%;
+}
+
+.submit-btn {
+  max-width: 100%;
+  width: 100%;
+}
