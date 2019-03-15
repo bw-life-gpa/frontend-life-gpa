@@ -44,7 +44,7 @@ export class HabitList extends Component {
   render() {
     if (this.state.isEditing === false) {
       return (
-        <div className="habit-added" style={{ border: `2px solid black` }}>
+        <div className="habit-added" style={{ borderBottom: `1px solid #eae8e8` }}>
           <p className="habit">{this.props.habit.habitTitle} </p>
           <div className="buttons">
             <button className="edit-button" onClick={this.toggleEdit}>

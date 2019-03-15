@@ -2,31 +2,29 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
+}
+.dashboard-header {
+    font-size: 90px;
+    color: #514849;
 }
 
 .dashboard-button {
     background-color: #ffec26;
     color: black;
     width: 250px;
-    /* height: 30px; */
-    font-size: 20px;
+    font-size: 25px;
+    font-family: 'Abel', sans-serif;
     border: none;
     margin: 20px;
-    font-weight: bold;
-    margin-top: 75px;
+    margin-top: 25px;
+    font-weight: 300;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
-/* .GPA {
-    border: 5px solid #ffec26;
-    border-radius: 50%;
-    height: 100px;
-    width: 100px;
-} */
 
 .circle-chart {
-    height: 200px;
-    width: 200px;
+    height: 400px;
+    width: 400px;
 }
 .circle-chart-circle {
     animation: circle-chart-fill 2s reverse;
@@ -40,7 +38,7 @@
 
 
 .gpa-text {
-    fill: #000;
+    fill: #514849;
     -moz-transform: translateY(0.25em);
     -ms-transform: translateY(0.25em);
     -webkit-transform: translateY(0.25em);
@@ -71,7 +69,17 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 100px;
+}
+.details-header {
+    max-width: 500px;
+}
+
+.details-body {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
 }
 
 .category-circle {
@@ -79,16 +87,34 @@
     flex-direction: row;
     align-items: center;
 }
+.category-circle .circle-chart {
+    height: 200px;
+    width: 200px;
+}
+
+.details-button {
+    background-color: #ffec26;
+    color: black;
+    width: 200px;
+    font-size: 25px;
+    font-family: 'Abel', sans-serif;
+    border: none;
+    margin: 20px;
+    font-weight: 300;
+    margin-top: 25px;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+}
 
 .details-category-habits {
-    margin-top: 100px;
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
 .details-category-habits h2 {
-
+    font-size: 70px;
+    color: #514849;
+    width: 420px;
 }
 
 .details-category-circles{
@@ -100,4 +126,10 @@
 
 .habit-circle {
     margin: 50px;
+    color: #514849;
+}
+
+.habit-circle .circle-chart {
+    height: 200px;
+    width: 200px;
 }

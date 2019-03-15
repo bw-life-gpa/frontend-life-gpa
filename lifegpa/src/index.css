@@ -1,6 +1,17 @@
 * {
   box-sizing: border-box;
 }
+html, body, #root, #root>div, #root>div>div, #root>div>div>div {
+  height: 100%;
+  min-height: fit-content;
+}
+/* #root {
+  min-height: 100vh;
+} */
+
+h1, h2, h3 {
+  font-family: 'Abel', sans-serif;
+}
 
 body {
   margin: 0;
@@ -10,6 +21,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-color: #e4e5e6;
+  height: 100%;
 }
 
 code {

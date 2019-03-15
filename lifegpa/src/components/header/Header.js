@@ -26,10 +26,10 @@ export class Header extends Component {
     const userID = localStorage.getItem("userID");
     if (!userID) {
       return (
-        <div className="header">
+        <header className="header">
           <div className="left">
             <Link to={`/`}>
-              <h2>Life GPA</h2>
+              <h2>lifeGPA</h2>
             </Link>
           </div>
           <div className="right">
@@ -40,25 +40,28 @@ export class Header extends Component {
               <p>Login</p>
             </Link>
           </div>
-        </div>
+        </header>
       );
     } else if (userID) {
       return (
-        <div className="header">
+        <header className="header">
           <div className="left">
             <Link to={`/`}>
-              <h2>Life GPA</h2>
+              <h2>lifeGPA</h2>
             </Link>
           </div>
           <div className="right">
             <Link to="/dashboard">
               <p>Dashboard</p>
             </Link>
+            <Link to="/settings">
+              <p>Settings</p>
+            </Link>
             <Link to={`/login`}>
               <p onClick={this.Logout}>Logout</p>
             </Link>
           </div>
-        </div>
+        </header>
       );
     }
   }

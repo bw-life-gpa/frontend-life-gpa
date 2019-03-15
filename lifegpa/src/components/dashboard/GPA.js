@@ -14,8 +14,7 @@ class GPA extends React.Component {
     return (
         <div className="GPA">
             {/* <Link to={`/details`}> */}
-           <h3>Life GPA</h3>
-           {this.props.circleCreator(this.props.gpa, '#ffec26', 'LifeGPA')}
+           {this.props.circleCreator(this.props.gpa, '#ffec26', 'lifeGPA')}
         </div>
     )}
 };

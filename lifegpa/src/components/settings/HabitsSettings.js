@@ -106,9 +106,11 @@ export class HabitsSettings extends Component {
           </div>
           <button className="habit-button">Add Habit</button>
         </form>
-        <Link to="/dashboard">
-          <button className="finish">Finish</button>
-        </Link>
+        <div className="habit-settings-finish">
+          <Link to="/dashboard">
+            <button className="finish">Finish</button>
+          </Link>
+        </div>
       </div>
     );
   }

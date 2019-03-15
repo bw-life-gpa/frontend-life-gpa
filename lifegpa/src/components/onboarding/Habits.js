@@ -67,7 +67,7 @@ export class Habits extends Component {
 
     return (
       <div className="onboard-habits">
-        <h1>Choose Your Habits</h1>
+        <h2>Choose Your Habits</h2>
         <p>
           <b>Step 1: </b>Add as many habits as you want, just like you did with
           the categories.

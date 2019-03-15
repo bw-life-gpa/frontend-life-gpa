@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { circleCreator, getCategoryHabits, getUserCategories, calculateGPA } from '../../actions';
 
 class CategoryDetail extends Component {
@@ -33,24 +33,24 @@ class CategoryDetail extends Component {
                 <div>Loading...</div>
             )
         } else {
-            // console.log(this.state)
             let reducedCategory = this.props.categories.find(e => parseInt(this.state.categoryID) === parseInt(e.id));
-            // console.log("reduced category", reducedCategory)
             return (
                 <div className="details-category-wrapper">
                     <div className="details-category-habits">
-                        {reducedCategory ? <h2>{reducedCategory.categoryTitle}</h2> : ""}
+                        {reducedCategory ? <h2>{(reducedCategory.categoryTitle).toLowerCase()}GPA</h2> : ""}
                         <div className="details-category-circles">
                             {this.props.habits.map(e => {
 
                                 let gpa = this.props.calculateGPA(e.created_at, e.completionPoints);
                                 return (
                                     <div key={e.id} className="habit-circle">
-                                        {this.props.circleCreator(gpa, reducedCategory.color, e.habitTitle)}
+                                        {this.props.circleCreator(gpa, reducedCategory.color, "")}
+                                        {e.habitTitle}
                                     </div>)
                             })}
                         </div>
                     </div>
+                    <Link to={`/details`}> <button className="dashboard-button">Category Details</button> </Link>
                 </div>
             );
         }

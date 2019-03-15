@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 import moment from 'moment';
 
 import './Dashboard.css';
@@ -31,22 +32,17 @@ class Details extends Component {
 
             let habit = this.props.habits[i];
             if (habit.categoryId === categoryID) {
-
                 let a = moment(habit.created_at, "YYYY-MM-DD");
                 days += now.diff(a, "days");
-
                 completionPoints += habit.completionPoints;
             }
-
         }
-
         let gpa = 0;
         if (days === 0) {
             gpa = 100;
         } else {
             gpa = Math.floor((completionPoints / days) * 100);
         }
-
         return gpa
 
     };
@@ -59,12 +55,18 @@ class Details extends Component {
         }
         return (
             <div className="details">
-                <h3> Details </h3>
+                <div className="details-header">
+                    <h2 className="dashboard-header">categoryGPA</h2>
+                </div>
+                
+                <div className="details-body">
                 {this.props.categories.map(e => {
                     let gpa = this.calculateCategoryGPA(e.id);
 
                     return <CategoryCircle category={e} key={e.name} gpa={gpa} />
                 })}
+                </div>
+                <Link to={`/dashboard`}> <button className="dashboard-button">Dashboard</button> </Link>
             </div>
         );
     }
