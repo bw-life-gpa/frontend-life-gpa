@@ -5,26 +5,32 @@
     margin-top: 100px;
 }
 
+.daily h2 {
+    font-size: 90px;
+    color: #514849;
+  }
+
 .daily-habit {
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
     width: 50%;
+    border-top: 1px solid #eae8e8;
 }
 
 .daily-habit-name {
-    font-weight: bold;
+    font-size: 20px;
 }
 .daily-habit-name-yes {
     font-weight: bold;
     text-decoration: line-through;
-    color: blue;
+    color: #2107d8;
 }
 .daily-habit-name-no {
     font-weight: bold;
     text-decoration: line-through;
-    color: red;
+    color: #e80d0d;
 }
 
 .daily-habit-buttons button{

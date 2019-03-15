@@ -5,10 +5,20 @@
   text-align: left;
 }
 
-h2 {
+.intro h2 {
   text-align: center;
+  font-size: 70px;
+  color: #514849;
+}
+
+.intro p {
+  line-height: 1.5;
+  font-size: 18px;
+  padding-bottom: 10px;
 }
 
 .continue {
   margin: 20px auto;
+  font-size: 25px;
+  font-family: 'Abel', sans-serif;
 }

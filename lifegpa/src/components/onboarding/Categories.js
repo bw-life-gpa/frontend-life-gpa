@@ -102,13 +102,16 @@ export class Categories extends Component {
           />
           <button className="add-category">Add Category</button>
         </form>
-        <p>
-          <b>Step 3: </b>After you have added all your categories, continue onto
-          choosing your habits.
-        </p>
-        <Link to="/onboarding/habits">
-          <button className="continue">Continue to Habits</button>
-        </Link>
+        <div className="step-3">
+          <p>
+            <b>Step 3: </b>After you have added all your categories, continue onto
+            choosing your habits.
+          </p>
+          <Link to="/onboarding/habits">
+            <button className="continue">Continue to Habits</button>
+          </Link>
+        </div>
+ 
       </div>
     );
   }

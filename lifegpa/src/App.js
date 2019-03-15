@@ -16,29 +16,35 @@ import Login from "./components/Login";
 import PrivateRoute from "./components/PrivateRoute";
 import Register from "./components/Register";
 
+const Home = props => (
+  <div className="home">
+    <h1>Welcome to lifeGPA</h1>
+  </div>
+)
+
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <Header />
+      <Header />
+      <div className="App-wrapper">
+        
 
-        <h1>Welcome to lifeGPA</h1>
+        
         <Route path="/login" component={Login} />
         <Route path="/register" component={Register} />
 
+        <Route exact path="/" component={Home} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
         <Route exact path="/onboarding" component={Introduction} />
         <Route exact path="/onboarding/categories" component={Categories} />
         <Route path="/onboarding/habits" component={Habits} />
         <Route exact path="/daily" component={Daily} />
         <Route exact path="/details" component={Details} />
-        <Route
-          exact
-          path="/details/:id"
-          component={CategoryDetail}
-        />
+        <Route exact path="/details/:id" component={CategoryDetail} />
         <Route exact path="/settings" component={CategorySettings} />
         <Route exact path="/settings/habits" component={HabitsSettings} />
+        </div>
       </div>
     );
   }

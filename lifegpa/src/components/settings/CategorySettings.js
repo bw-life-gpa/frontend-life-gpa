@@ -88,9 +88,11 @@ export class CategorySettings extends Component {
           />
           <button>Add Category</button>
         </form>
-        <Link to="/settings/habits">
-          <button className="continue">Continue</button>
-        </Link>
+        <div className="category-continue">
+          <Link to="/settings/habits">
+            <button className="continue">Continue</button>
+          </Link>
+        </div>
       </div>
     );
   }

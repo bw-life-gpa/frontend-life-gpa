@@ -11,9 +11,9 @@ class CategoryCircle extends Component {
         <div className="category-circle">
             {this.props.circleCreator(this.props.gpa, this.props.category.color, this.props.category.categoryTitle)}
             <Link to={`/details/${this.props.category.id}`}> 
-                <button className="details-button">Details</button> 
+                <button className="details-button">{`${this.props.category.categoryTitle} GPA`}</button> 
             </Link>
-        
+            
         </div>
     );}
 };

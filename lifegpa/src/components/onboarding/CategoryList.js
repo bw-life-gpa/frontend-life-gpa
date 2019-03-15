@@ -46,7 +46,7 @@ export class CategoryList extends Component {
       return (
         <div
           className="category-added"
-          style={{ border: `2px solid ${this.props.category.color}` }}
+          style={{ borderBottom: `1px solid ${this.props.category.color}` }}
         >
           <p
             className="category-text"

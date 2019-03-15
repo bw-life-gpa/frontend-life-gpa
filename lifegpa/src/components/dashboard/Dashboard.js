@@ -60,13 +60,13 @@ class Dashboard extends Component {
         let gpa = this.calculateLifeGPA();
         return (
             <div className="dashboard">
+                <h2 className="dashboard-header">lifeGPA</h2>
                 <GPA gpa={gpa} />
 
-                <Link to={`/details`}> <button className="dashboard-button">Details</button> </Link>
+                <Link to={`/details`}> <button className="dashboard-button">GPA Details</button> </Link>
                 
                 <Link to={`/daily`}> <button className="dashboard-button">Begin Daily Report</button> </Link>
-          <Link to={`/settings`}> <button className="dashboard-button">Settings</button>{" "}
-        </Link>
+                <Link to={`/settings`}> <button className="dashboard-button">Settings</button></Link>
             </div>
         );
     }}

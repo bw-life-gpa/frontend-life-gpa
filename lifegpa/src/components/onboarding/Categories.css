@@ -1,8 +1,19 @@
-form {
+.categories {
+  /* max-width: 400px; */
+  /* margin: 0 auto; */
+  /* text-align: left; */
+}
+
+.categories h2 {
+  font-size: 40px;
+  color: #514849;
+  text-align: center;
+}
+.categories form {
   display: block;
-  max-width: 200px;
+  /* max-width: 200px; */
   width: 100%;
-  margin: 0 auto;
+  margin: 30px auto;
 }
 
 .category-form {
@@ -12,14 +23,8 @@ form {
 .edit-form {
   max-width: 320px;
   width: 100%;
-  margin: 0 auto;
+  /* margin: 0 auto; */
   border: none;
-}
-
-.categories {
-  max-width: 400px;
-  margin: 100px auto;
-  text-align: left;
 }
 
 .color-picker {
@@ -27,27 +32,30 @@ form {
   margin-right: 0;
 }
 
-p {
+.categories p {
   margin: 20px auto;
   max-width: 400px;
   width: 90%;
 }
 
-ul {
+.categories ul {
   margin: 30px auto;
-  border: 2px solid black;
+  /* border: 2px solid black; */
+  border: 1px solid #514849;
   border-radius: 10px;
   max-width: 400px;
 }
 
-li {
+.categories li {
   margin: 20px;
-  border-bottom: 3px solid rgb(23, 235, 3);
+  /* border-bottom: 3px solid rgb(23, 235, 3); */
+  border-bottom: 1px solid #eae8e8;
   font-size: 20px;
 }
 
 button {
   margin: 0 auto;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
 .box {
@@ -62,31 +70,38 @@ button {
   justify-content: space-between;
   max-width: 300px;
   width: 100%;
-  margin: 20px auto;
-  border-radius: 10px;
+  margin: 0px auto;
+  /* border-radius: 5px; */
+  padding: 0 0 0 15px;
 }
 
 .category-text {
   margin: 20px 20px;
   display: flex;
   align-items: center;
+  font-size: 23px;
+  font-weight: 600;
 }
 
-input {
+.categories input {
   max-width: 300px;
   width: 100%;
   height: 40px;
-  border-radius: 10px;
+  border-radius: 5px;
   text-align: center;
 }
 
-input::placeholder {
+.categories input::placeholder {
   text-align: center;
 }
 
 .continue {
   max-width: 400px;
   width: 100%;
+}
+
+.category-continue {
+  margin-top: 100px;
 }
 
 .add-category {
@@ -106,4 +121,8 @@ input::placeholder {
 .submit-btn {
   max-width: 100%;
   width: 100%;
+}
+
+.step-3 {
+  margin: 80px 0;
 }
