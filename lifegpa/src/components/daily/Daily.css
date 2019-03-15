@@ -47,3 +47,17 @@
     background-color: #efefef;
     /* color:  */
 }
+
+.daily-dashboard-button {
+    background-color: #ffec26;
+    color: black;
+    width: 250px;
+    font-size: 25px;
+    font-family: 'Abel', sans-serif;
+    border: none;
+    margin: 20px;
+    margin-top: 150px;
+    font-weight: 300;
+    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+
+}

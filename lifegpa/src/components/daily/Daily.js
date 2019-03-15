@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
+import { Link } from 'react-router-dom';
 
 import './Daily.css';
 
@@ -41,6 +42,7 @@ class Daily extends Component {
                 {(this.state.habits.length === 0 || this.state.habits.length === null || this.state.habits.length === undefined) 
                     ? <div>You do not have any habits, please go add them.</div>
                     : this.props.habits.map(e => (<DailyHabit habit={e} key={e.id}/> ))}
+                    <Link to={`/dashboard`}> <button className="daily-dashboard-button">Dashboard</button></Link>
             </div>
         );}
     }
