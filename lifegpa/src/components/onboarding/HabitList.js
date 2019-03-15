@@ -61,9 +61,11 @@ export class HabitList extends Component {
       );
     } else {
       return (
-        <div>
-          {console.log(this.props.id)}
-          <form onSubmit={e => this.handleUpdateHabit(e, this.props.habit.id)}>
+        <div className="edit-form">
+          <form
+            className="edit-box"
+            onSubmit={e => this.handleUpdateHabit(e, this.props.habit.id)}
+          >
             <input
               type="text"
               name="habitTitle"
@@ -73,9 +75,11 @@ export class HabitList extends Component {
               autoComplete="off"
               required
             />
-            <button>Submit</button>
+            <button className="submit-btn">Submit</button>
           </form>
-          <button onClick={this.toggleEdit}>Cancel</button>
+          <button className="cancel-btn" onClick={this.toggleEdit}>
+            Cancel
+          </button>
         </div>
       );
     }
