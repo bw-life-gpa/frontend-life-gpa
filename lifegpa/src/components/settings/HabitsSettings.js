@@ -67,7 +67,7 @@ export class HabitsSettings extends Component {
 
     return (
       <div className="onboard-habits">
-        <h1>Edit Your Habits</h1>
+        <h2>Edit Your Habits</h2>
         <div className="new-habit">
           {this.props.habits.map((habit, index) => (
             <HabitList

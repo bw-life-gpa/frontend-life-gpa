@@ -1,135 +1,161 @@
 .dashboard {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .dashboard-header {
-    font-size: 90px;
-    color: #514849;
+  font-size: 90px;
+  color: #514849;
+}
+
+@media (max-width: 500px) {
+  .dashboard-header {
+    font-size: 50px;
+  }
 }
 
 .dashboard-button {
-    background-color: #ffec26;
-    color: black;
-    width: 250px;
-    font-size: 25px;
-    font-family: 'Abel', sans-serif;
-    border: none;
-    margin: 20px;
-    margin-top: 25px;
-    font-weight: 300;
-    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  background-color: #ffec26;
+  color: black;
+  width: 250px;
+  font-size: 25px;
+  font-family: "Abel", sans-serif;
+  border: none;
+  margin: 20px;
+  margin-top: 25px;
+  font-weight: 300;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
+@media (max-width: 500px) {
+  .dashboard-button {
+    margin: 60px;
+  }
+}
 
 .circle-chart {
-    height: 400px;
-    width: 400px;
+  height: 400px;
+  width: 400px;
 }
 .circle-chart-circle {
-    animation: circle-chart-fill 2s reverse;
-    transform: rotate(-90deg);
-    transform-origin: center;
-}
-  
-@keyframes circle-chart-fill {
-    to { stroke-dasharray: 0 100; }
+  animation: circle-chart-fill 2s reverse;
+  transform: rotate(-90deg);
+  transform-origin: center;
 }
 
+@keyframes circle-chart-fill {
+  to {
+    stroke-dasharray: 0 100;
+  }
+}
 
 .gpa-text {
-    fill: #514849;
-    -moz-transform: translateY(0.25em);
-    -ms-transform: translateY(0.25em);
-    -webkit-transform: translateY(0.25em);
-    transform: translateY(0.25em);
+  fill: #514849;
+  -moz-transform: translateY(0.25em);
+  -ms-transform: translateY(0.25em);
+  -webkit-transform: translateY(0.25em);
+  transform: translateY(0.25em);
 }
 
 .chart-number {
-    font-size: 0.6em;
-    line-height: 1;
-    text-anchor: middle;
-    -moz-transform: translateY(-0.25em);
-    -ms-transform: translateY(-0.25em);
-    -webkit-transform: translateY(-0.25em);
-    transform: translateY(-0.25em);
+  font-size: 0.6em;
+  line-height: 1;
+  text-anchor: middle;
+  -moz-transform: translateY(-0.25em);
+  -ms-transform: translateY(-0.25em);
+  -webkit-transform: translateY(-0.25em);
+  transform: translateY(-0.25em);
 }
-  
+
 .chart-label {
-    font-size: 0.2em;
-    /* text-transform: uppercase; */
-    text-anchor: middle;
-    -moz-transform: translateY(0.7em);
-    -ms-transform: translateY(0.7em);
-    -webkit-transform: translateY(0.7em);
-    transform: translateY(0.7em);
+  font-size: 0.2em;
+  /* text-transform: uppercase; */
+  text-anchor: middle;
+  -moz-transform: translateY(0.7em);
+  -ms-transform: translateY(0.7em);
+  -webkit-transform: translateY(0.7em);
+  transform: translateY(0.7em);
 }
 
 .details {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .details-header {
-    max-width: 500px;
+  max-width: 500px;
 }
 
 .details-body {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 }
 
 .category-circle {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 .category-circle .circle-chart {
-    height: 200px;
-    width: 200px;
+  height: 200px;
+  width: 200px;
+}
+
+@media (max-width: 500px) {
+  .category-circle {
+    display: block;
+  }
 }
 
 .details-button {
-    background-color: #ffec26;
-    color: black;
-    width: 200px;
-    font-size: 25px;
-    font-family: 'Abel', sans-serif;
-    border: none;
-    margin: 20px;
-    font-weight: 300;
-    margin-top: 25px;
-    box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  background-color: #ffec26;
+  color: black;
+  width: 200px;
+  font-size: 25px;
+  font-family: "Abel", sans-serif;
+  border: none;
+  margin: 20px;
+  font-weight: 300;
+  margin-top: 25px;
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
 .details-category-habits {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .details-category-habits h2 {
-    font-size: 70px;
-    color: #514849;
-    width: 420px;
+  font-size: 70px;
+  color: #514849;
+  width: 420px;
 }
 
-.details-category-circles{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
+@media (max-width: 500px) {
+  .details-category-habits h2 {
+    font-size: 40px;
+  }
+}
+
+.details-category-circles {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .habit-circle {
-    margin: 50px;
-    color: #514849;
+  margin: 50px;
+  color: #514849;
 }
 
 .habit-circle .circle-chart {
-    height: 200px;
-    width: 200px;
+  height: 200px;
+  width: 200px;
 }
