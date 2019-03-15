@@ -5,10 +5,17 @@
 }
 
 .categories h2 {
-  font-size: 40px;
+  font-size: 70px;
   color: #514849;
   text-align: center;
 }
+
+@media (max-width: 650px) {
+  .categories h2 {
+    font-size: 40px;
+  }
+}
+
 .categories form {
   display: block;
   /* max-width: 200px; */

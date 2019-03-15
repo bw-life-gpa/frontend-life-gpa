@@ -7,9 +7,15 @@
 
 .onboard-habits h2 {
   text-align: center;
-  font-size: 40px;
+  font-size: 70px;
   color: #514849;
   text-align: center;
+}
+
+@media (max-width: 650px) {
+  .onboard-habits h2 {
+    font-size: 40px;
+  }
 }
 
 .habit-form {
@@ -74,7 +80,8 @@
   border: 1px solid #e80d0d;
   border-radius: 50%;
   cursor: pointer;
-  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2), 0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
+  box-shadow: 0px 2px 4px -1px rgba(0, 0, 0, 0.2),
+    0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 }
 
 .edit-button {

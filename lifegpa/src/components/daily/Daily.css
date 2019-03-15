@@ -10,6 +10,12 @@
   color: #514849;
 }
 
+@media (max-width: 500px) {
+  .daily h2 {
+    font-size: 50px;
+  }
+}
+
 .daily-habit {
   display: flex;
   flex-direction: row;
